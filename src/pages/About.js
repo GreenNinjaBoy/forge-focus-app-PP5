@@ -1,4 +1,5 @@
 import React from 'react'
+import {Carousel} from 'react-bootstrap'
 
 const About = () => {
     return (
@@ -14,7 +15,7 @@ const About = () => {
                     <p>When you strive to achieve your goals in life but find it difficult to keep things in oreder then Forge Focus is the place for you!</p>
                 </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item interval={500}>
+            <Carousel.Item interval={1000}>
                 <img
                     className="d-block w-100"
                     src="holder.js/800x400?text=Second slide&bg=282c34"
@@ -27,7 +28,7 @@ const About = () => {
                     <p>From here you can create new areas of refinement, add goals and view areas you have already been refining</p>
                 </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item>
+            <Carousel.Item interval={1000}>
                 <img
                     className="d-block w-100"
                     src="holder.js/800x400?text=Third slide&bg=20232a"
@@ -39,7 +40,7 @@ const About = () => {
                     <p>With each refinement area, you can then set goals you wish to work towards and set assignments that need to be achieved</p>
                 </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item>
+            <Carousel.Item interval={1000}>
                 <img
                     className="d-block w-100"
                     src="holder.js/800x400?text=Fourth slide&bg=20232a"
