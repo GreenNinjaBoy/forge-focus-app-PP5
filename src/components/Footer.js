@@ -10,13 +10,13 @@ const Footer = () => {
                 <span>2024</span>
             </p>
             <span>
-                <a href="#"
+                <a href="https://github.com/GreenNinjaBoy"
                     target="_blank"
                     rel="noreferrer"
                     aria-label="Visit my GitHub profile (opens in a new tab)"
                 >
                 </a>
-                <a href="#"
+                <a href="https://www.linkedin.com/in/jamie-connell-995748193/"
                     target="_blank"
                     rel="noreferrer"
                     aria-label="Visit my linkedin profile (opens in a new tab)"
