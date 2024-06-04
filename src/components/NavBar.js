@@ -1,8 +1,12 @@
 import React from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap'
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle'
 
 
 const NavBar = () => {
+
+    const {expand, setExpand, ref} = useClickOutsideToggle();
+
     return (
         <Navbar bg="light" expand="md">
             <Container>
@@ -11,7 +15,7 @@ const NavBar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
                         <Nav.Link href="#home">About</Nav.Link>
-                        <Nav.Link href="#link">Signup/Login</Nav.Link>
+                        <Nav.Link href="/Signin">Signup/Login</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
