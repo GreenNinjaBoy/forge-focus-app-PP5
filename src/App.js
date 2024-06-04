@@ -1,3 +1,4 @@
+import React from 'react'
 import NavBar from './components/NavBar'
 import About from './pages/About'
 import Footer from './components/Footer'
@@ -31,9 +32,9 @@ function App() {
       <SuccessMessage />
         <div>
           {tokensChecked ? (
-            <switch>
-              <Route exact path="/" render={() => <Home />}
-              <Route exact path="/signin" render={() => <SignIn />}
+            <Switch>
+              <Route exact path="/" render={() => <Home />} />
+              <Route exact path="/signin" render={() => <SignIn />} />
               <Route exact path="/organise" render={() => (
         authenticatedUser ? ( <Organise /> ) : ( <Redirect to={{pathname: "/signin"}} />)
               )} />
@@ -50,7 +51,7 @@ function App() {
                 authenticatedUser ? ( <TakeAction /> ) : ( <Redirect to={{pathname: "/signin"}} />)
                 )} />
               <Route render={() => <NotFound />} />
-            </switch>
+            </Switch>
             ) : (
               <div>
                 Just checking authentication status ....
