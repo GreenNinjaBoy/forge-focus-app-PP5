@@ -56,7 +56,52 @@ function Signin() {
             <h1>Log Into Your user Account</h1>
             </div>
         </div>
-        
+        <div>
+        <Form>
+         {errors.non_field_errors?.map((message, idx) => (
+            <Alert key={idx} className={formStyles.ErrorAlert}>
+              {message}
+            </Alert>
+          ))}
+
+          {errors.username?.map((message, idx) => (
+            <Alert key={idx} className={formStyles.ErrorAlert}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group controlId="username">
+            <Form.Label>Username:</Form.Label>
+            <Form.Control
+            type="text"
+            placeholder="Enter your username"
+            name="username"
+            value={username}
+            onChange={handleChange}
+            />
+            </Form.Group>
+
+            {errors.password?.map((message, idx) => (
+            <Alert key={idx}>
+                {message}
+            </Alert>
+            ))}
+        <Form.Group controlId="password">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+            />
+            </Form.Group>
+
+            <Button type="submit">
+            Sign In
+            </Button>
+        </Form>
+
+        </div>
     </div>
   )
 }
