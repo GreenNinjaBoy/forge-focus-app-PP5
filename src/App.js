@@ -41,14 +41,14 @@ function App() {
               <Route exact path="/miscellaneous" render={() => (
                 authenticatedUser ? ( <Miscellaneous /> ) : ( <Redirect to={{pathname: "/signin"}} />)
               )} />
-              <Route exact path="/focus/create" render={() => (
+              <Route exact path="/refine/create" render={() => (
                 authenticatedUser ? ( <Refinement /> ) : ( <Redirect to={{pathname: "/signin"}} />)
               )} />
-              <Route exact path="/focus/:id" render={() => (
+              <Route exact path="/refine/:id" render={() => (
                 authenticatedUser? ( <Refine /> ) : ( <Redirect to={{pathname: "/signin"}} />)
               )} />
-              <Route exact path="/takeaction" render={() => (
-                authenticatedUser ? ( <TakeAction /> ) : ( <Redirect to={{pathname: "/signin"}} />)
+              <Route exact path="/takesteps" render={() => (
+                authenticatedUser ? ( <TakeSteps /> ) : ( <Redirect to={{pathname: "/signin"}} />)
                 )} />
               <Route render={() => <NotFound />} />
             </Switch>
