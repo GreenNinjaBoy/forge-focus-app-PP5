@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import { Alert } from "react-bootstrap";
-import Button from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import {useCurrentUser, useSetCurrentUser} from '../../context/CurrentUserContext';
@@ -15,7 +15,7 @@ function Signin() {
 
     const setCurrentUser = useCurrentUser();
 
-    const [signInData, setSignInData] = useSate({
+    const [signInData, setSignInData] = useState({
         username: '',
         password: ''
     });
@@ -33,7 +33,7 @@ function Signin() {
         });
     };
 
-    const handleSubmit = async (event => {
+    const handleSubmit = async (event) => {
         event.prevent.default();
         try{
             const {data} = await axios.post('/dj-rest-auth/login/', signInData);
@@ -59,13 +59,13 @@ function Signin() {
         <div>
         <Form>
          {errors.non_field_errors?.map((message, idx) => (
-            <Alert key={idx} className={formStyles.ErrorAlert}>
+            <Alert key={idx}>
               {message}
             </Alert>
           ))}
 
           {errors.username?.map((message, idx) => (
-            <Alert key={idx} className={formStyles.ErrorAlert}>
+            <Alert key={idx}>
               {message}
             </Alert>
           ))}

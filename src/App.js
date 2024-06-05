@@ -1,11 +1,21 @@
-import React from 'react'
-import NavBar from './components/NavBar'
-import About from './pages/About'
-import Footer from './components/Footer'
-import SignIn from './pages/auth/Signin'
-import { useEffect, useState } from 'react'
+import React from 'react';
+import './api/axiosDefaults';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom';
+import NavBar from './components/NavBar';
+import Home from './pages/Home';
+import Footer from './components/Footer';
+import SignIn from './pages/auth/Signin';
+import Organise from './pages/organise/Organise';
+import OrganiseDetails from './pages/organise/OrganiseDetails';
+import Miscellaneous from './pages/organise/Miscellaneous';
+import Refine from './pages/refine/Refine';
+import Refinement from './pages/refine/Refinement';
+import TakeSteps from './pages/steps/TakeSteps';
+import NotFound from './NotFound';
+import { useEffect, useState } from 'react';
+import { useCurrentUser } from './context/CurrentUserContext';
 import './App.css';
-import { Route } from 'react-router-dom/cjs/react-router-dom.min'
+import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
   
@@ -29,7 +39,7 @@ function App() {
   return (
     <div>
       <NavBar />
-      <SuccessMessage />
+      {/* <SuccessMessage /> */}
         <div>
           {tokensChecked ? (
             <Switch>
@@ -38,7 +48,7 @@ function App() {
               <Route exact path="/organise" render={() => (
         authenticatedUser ? ( <Organise /> ) : ( <Redirect to={{pathname: "/signin"}} />)
               )} />
-              <Route exact path="/miscellaneous" render={() => (
+              <Route exact path="/orgasnise" render={() => (
                 authenticatedUser ? ( <Miscellaneous /> ) : ( <Redirect to={{pathname: "/signin"}} />)
               )} />
               <Route exact path="/refine/create" render={() => (
@@ -47,7 +57,7 @@ function App() {
               <Route exact path="/refine/:id" render={() => (
                 authenticatedUser? ( <Refine /> ) : ( <Redirect to={{pathname: "/signin"}} />)
               )} />
-              <Route exact path="/takesteps" render={() => (
+              <Route exact path="/steps" render={() => (
                 authenticatedUser ? ( <TakeSteps /> ) : ( <Redirect to={{pathname: "/signin"}} />)
                 )} />
               <Route render={() => <NotFound />} />

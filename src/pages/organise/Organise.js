@@ -1,4 +1,5 @@
 import React from "react";
+import OrganiseDetails from "./OrganiseDetails";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useCheckedUser, useCurrentUser } from "../../context/CurrentUserContext";
 
@@ -34,3 +35,5 @@ const Organise = () => {
     </div>
   )
 }
+
+export default Organise

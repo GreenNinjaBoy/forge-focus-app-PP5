@@ -4,18 +4,18 @@ function to be true. This will trigger a message that will
 display to the user with the given message. this called
 'SuccessMessage' which is nested within App.js */
 
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 export const ShowGlobalSuccessContext = createContext();
 export const SetShowGlobalSuccessContext = createContext();
 
 export const GlobalSuccessMessageContext = createContext();
-export const SetGlobalSuccessMeassageContext = createContext();
+export const SetGlobalSuccessMessageContext = createContext();
 
 export const useShowGlobalSuccess = () => useContext(ShowGlobalSuccessContext);
 export const useSetShowGlobalSuccess = () => useContext(SetShowGlobalSuccessContext);
 export const useGlobalSuccessMessage = () => useContext(GlobalSuccessMessageContext);
-export const useSetGlobalSuccessMessage = () => useContext(SetGlobalSuccessMeassageContext);
+export const useSetGlobalSuccessMessage = () => useContext(SetGlobalSuccessMessageContext);
 
 export const GlobalMessageProvider = ({children}) => {
     const [showGlobalSuccess, setShowGlobalSuccess] = useState(false);

@@ -1,12 +1,12 @@
 /* This code was taken from the 'Moments'
 walkthrough project with the addition of the
 checkedUser functionality */
-
+import React from "react";
 import axios from "axios";
 import { createContext, useContext, useEffect, useState, useMemo } from "react";
 import {axiosReq, axiosRes} from "../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import {removeTokenTimestamp, shouldRefreshToken} from "../utils/utils";
+import { removeTokenTimestamp, shouldRefreshToken } from "../utils/Utils";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -30,7 +30,7 @@ export const CurrentUserProvider = ({children}) => {
             const {data} = await axiosRes.get('dj-rest-auth/user/')
             setCurrentUser(data)
         } catch(err){
-            console.log(error)
+            console.log(err)
         } finally {
             setCheckedUser(true);
         }
