@@ -1,6 +1,6 @@
-import React from 'react'
-import { useCheckedUser, useCurrentUser } from '../../context/CurrentUserContext':
-import { useParams } from 'react-router-dom/cjs/react-router-dom'
+import React from 'react';
+import { useCheckedUser, useCurrentUser } from '../../context/CurrentUserContext';
+import { useParams } from 'react-router-dom/cjs/react-router-dom';
 
 const Refine = () => {
 

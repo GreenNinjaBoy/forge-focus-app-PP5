@@ -1,21 +1,22 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import './api/axiosDefaults';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
+import SuccessMessage from './components/SuccessMessage';
 import Footer from './components/Footer';
 import SignIn from './pages/auth/Signin';
 import Organise from './pages/organise/Organise';
-import OrganiseDetails from './pages/organise/OrganiseDetails';
 import Miscellaneous from './pages/organise/Miscellaneous';
 import Refine from './pages/refine/Refine';
-import Refinement from './pages/refine/Refinement';
+import Refinement from './pages/refine/RefineCreate';
 import TakeSteps from './pages/steps/TakeSteps';
 import NotFound from './NotFound';
 import { useEffect, useState } from 'react';
 import { useCurrentUser } from './context/CurrentUserContext';
 import './App.css';
-import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
+
 
 function App() {
   
@@ -39,7 +40,7 @@ function App() {
   return (
     <div>
       <NavBar />
-      {/* <SuccessMessage /> */}
+      <SuccessMessage />
         <div>
           {tokensChecked ? (
             <Switch>
