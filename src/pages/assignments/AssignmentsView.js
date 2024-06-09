@@ -4,7 +4,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from "../../context/GlobalMessageContext";
 import axios from "axios";
 
-cosnt AssignmentTask = (props) = > {
+const AssignmentTask = (props) = > {
     const {
         id,
         name,
