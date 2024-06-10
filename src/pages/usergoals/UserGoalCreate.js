@@ -123,7 +123,7 @@ const UserGoalCreate = (props) => {
               placeholder='What shall we call your Goal?'
               name='title'
               value={title}
-              onChange{handleChange}
+              onChange={handleChange}
               />
           </Form.Group>
 
