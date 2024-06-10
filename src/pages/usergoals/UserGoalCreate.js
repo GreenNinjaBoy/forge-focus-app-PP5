@@ -4,6 +4,7 @@ import {axiosReq} from '../../api/axiosDefaults';
 import {useSetGlobalSuccessMessage, useSetShowGlobalSuccess, useSetShowGlobalSuccess} from '../../context/GlobalMessageContext';
 import axios from 'axios';
 import { set } from 'msw/lib/types/context';
+import { Form } from 'react-bootstrap';
 
 const UserGoalCreate = (props) => {
   const {
@@ -91,11 +92,125 @@ const UserGoalCreate = (props) => {
     });
   };
 
-  
-
+  const handleCancel = () => {
+    setUserGoalData({
+      title:'',
+      description:'',
+      value:'',
+      criteria:'',
+      achieve_by: '',
+    });
+    if (setUserGoalsState) {
+      setUserGoalsState("view");
+    }
+  };
 
   return (
-    <div>UserGoalCreate</div>
+    <div>
+      <h3>Create a New Goal</h3>
+      <Form onSubmit={handleSubmit}>
+        <div>
+
+          {errors.title?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group controlId="user-goal-title">
+            <Form.Label>Goal</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder='What shall we call your Goal?'
+              name='title'
+              value={title}
+              onChange{handleChange}
+              />
+          </Form.Group>
+
+          {errors.description?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group controlId="user-goal-description">
+            <Form.Label>Goal Description:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Describe what you want to achieve?"
+              name="description"
+              value={description}
+              onChange={handleChange}
+              className={styles.Input}
+            />
+          </Form.Group>
+
+          {errors.value?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group controlId="user-goal-value">
+            <Form.Label>Goal Value:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="What will you gain by achieving this goal?"
+              name="value"
+              value={value}
+              onChange={handleChange}
+              className={styles.Input}
+            />
+          </Form.Group>
+
+          {errors.criteria?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group controlId="user-goal-criteria">
+            <Form.Label>Goal Criteria:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Criteria to be met to achieve this goal?"
+              name="criteria"
+              value={criteria}
+              onChange={handleChange}
+              className={styles.Input}
+            />
+          </Form.Group>
+
+          {errors.deadline?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+
+          <Form.Group controlId="user-goal-achieve-by">
+            <Form.Label> Goal Achieved by:</Form.Label>
+            <Form.Control
+              type="date"
+              name="achieve_by"
+              value={achieve_by}
+              onChange={handleChange}
+              className={styles.DateInput}
+            />
+          </Form.Group>
+
+          {errors.non_field_errors?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+        </div>
+        <div>
+          <Button onClick={handleCancel}>
+              Cancel Goal
+          </Button>
+          <Button type="submit">
+            Save Goal
+          </Button>
+        </div>
+      </Form>
+    </div>
   )
 }
 
