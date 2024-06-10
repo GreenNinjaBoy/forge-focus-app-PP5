@@ -84,7 +84,16 @@ const UserGoalCreate = (props) => {
     }
   };
 
+  const handleChange = (event) => {
+    setUserGoalData({
+      ...userGoalData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   
+
+
   return (
     <div>UserGoalCreate</div>
   )
