@@ -96,7 +96,7 @@ const UserGoalEdit = (props) => {
   return (
     <div>
       <h3>Edit Goal Details</h3>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <div>
           {errors.title?.map((message, idx) => (
             <Alert key={idx}>
@@ -114,11 +114,12 @@ const UserGoalEdit = (props) => {
               />
           </Form.Group>
 
-          {errors.description?map((message, idx) => (
+          {errors.description?.map((message, idx) => (
             <Alert key={idx}>
-              {message}
+            {message}
             </Alert>
           ))}
+
           <Form.Group controlId="new-user-goal-description">
             <Form.Label>Description</Form.Label>
             <Form.Control
@@ -129,7 +130,7 @@ const UserGoalEdit = (props) => {
             />
           </Form.Group>
 
-          {error.value?.map((message, idx) => (
+          {errors.value?.map((message, idx) => (
             <Alert key={idx}>
             {message}
             </Alert>
@@ -137,19 +138,64 @@ const UserGoalEdit = (props) => {
           <Form.Group controlId="new-user-goal-value">
             <Form.Label>Value:</Form.Label>
             <Form.Control
-             type="text"
-             placeholder="What will you gain by achievbeing this goal?"
-             name="newValue"
-             value={newValue}
-             onChange={handleChange}
-             />
+            type="text"
+            placeholder="What will you gain by achievbeing this goal?"
+            name="newValue"
+            value={newValue}
+            onChange={handleChange}
+            />
           </Form.Group>
 
-          
+          {errors.criteria?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group controlId="new-user-goal-criteria">
+            <Form.Label>Criteria:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="How will you know when this goal is achieved?"
+              name="newCriteria"
+              value={newCriteria}
+              onChange={handleChange}
+              className={styles.Input}
+            />
+          </Form.Group>
+
+          {errors.achieve_by?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group controlId="new-goal-acheive-date">
+            <Form.Label>Achieve by:</Form.Label>
+            <Form.Control
+              type="date"
+              name="newAchieve_by"
+              value={newAchieve_By}
+              onChange={handleChange}
+              className={styles.DateInput}
+            />
+          </Form.Group>
+
+          {errors.non_field_errors?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
         </div>
-      </form>
-    </div>
+        <div>
+          <Button onClick={handleCancel}>
+              Cancel
+          </Button>
+          <Button type="submit">
+            Save Changes
+          </Button>
+        </div>
+      </Form>
+  </div>
   )
-  };
+};
 
 export default UserGoalEdit
