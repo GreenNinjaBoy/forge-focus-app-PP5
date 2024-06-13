@@ -55,8 +55,70 @@ const UserGoalEdit = (props) => {
     });
     };
 
-    
-  }
-}
+  const handleCancel = () => {
+    setUserGoalState("view");
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('title', newTitle)
+    formData.append('description', newDescription)
+    formData.append('value', newValue)
+    formData.append('criteria', newCriteria)
+    formData.append('refine', refine)
+    if (newAchieve_By) {
+      const parts = newAchieve_By.spit('-');
+      const date = new Date(parts[0], parts[1] - 1, parts[2], 12);
+      const djangoDate = date.toISOString();
+      formData.append('achieve_by', djangoDate)
+    }
+    try {
+      const{data} = await axiosReq.put(`/userGoals/${id}`, formData);
+      setGlobalSuccessMessage('Goal edited successfully!')
+      setShowGlobalSuccess(true);
+      const userGoalIndex = userGoalList.findIndex(goal => userGoalData.id === id);
+      userGoalList[userGoalIndex] = data;
+      setUserGoals(
+        { results:{
+          ...userGoalList
+        }}
+      );
+      setUserGoalState("view");
+    } catch(err){
+      console.log(err);
+      if (err.response?.status !==401) {
+        setErrors(err.response?.data);
+      }
+    }
+  };
+
+  return (
+    <div>
+      <h3>Edit Goal Details</h3>
+      <form onSubmit={handleSubmit}>
+        <div>
+          {errors.title?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group controlId="new-user-goal-title">
+            <Form.Label>Goal:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Goal Name"
+              name="newTitle"
+              value={newTitle}
+              onChange={handleChange}
+              />
+          </Form.Group>
+
+          
+        </div>
+      </form>
+    </div>
+  )
+  };
 
 export default UserGoalEdit
