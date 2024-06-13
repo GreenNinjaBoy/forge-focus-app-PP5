@@ -114,6 +114,21 @@ const UserGoalEdit = (props) => {
               />
           </Form.Group>
 
+          {errors.description?map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group controlId="new-user-goal-description">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+            type="text"
+            placeholder="What do you wish to achieve?"
+            name="newDescription"
+            onChange={handleChange}
+            />
+          </Form.Group>
+
           
         </div>
       </form>
