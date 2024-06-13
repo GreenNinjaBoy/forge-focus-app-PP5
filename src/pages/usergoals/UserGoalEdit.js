@@ -28,7 +28,35 @@ const UserGoalEdit = (props) => {
     }
   };
 
-  
+  const userGoalList = userGoals.results;
+
+  const [userGoalData, setUserGoalData] = useState ({
+    newTitle: title,
+    newDescription: description,
+    newValue, value,
+    newCriteria: criteria,
+    newAchieve_By: convertedDate(),
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const {
+    newTitle,
+    newDescription,
+    newValue,
+    newCriteria,
+    newAchieve_By,
+  } = userGoalData;
+
+  const handleChange = (event) => {
+    setUserGoalData({
+      ...userGoalData,
+      [event.target.name]: event.target.value,
+    });
+    };
+
+    
+  }
 }
 
 export default UserGoalEdit
