@@ -10,12 +10,12 @@ const NavBar = () => {
     return (
         <Navbar bg="light" expand="md">
             <Container>
-                <Navbar.Brand className='mr-auto' href="#home">ForgeFocus</Navbar.Brand>
+                <Navbar.Brand className='mr-auto' to="#home">ForgeFocus</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Nav.Link href="#home">About</Nav.Link>
-                        <Nav.Link href="/Signin">Signup/Login</Nav.Link>
+                        <Nav.Link to="/home">About</Nav.Link>
+                        <Nav.Link to="/Signin">Signup/Login</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

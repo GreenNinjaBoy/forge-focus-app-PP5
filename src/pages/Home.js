@@ -9,40 +9,40 @@ const Home = () => {
 
     const signedOutButtons = (
         <>
-            <link to={'/signup'}>
+            <Link to={'/signup'}>
                 Ready to Sign up!!
-            </link>
+            </Link>
         </>
     );
 
     const signedInButtons = (
         <>
-            <link to={'/organise'}>
+            <Link to={'/organise'}>
             Get Organised!!
-            </link>
-            <link to={'/steps'}>
+            </Link>
+            <Link to={'/steps'}>
                 Take a Step in the right direction!
-            </link>
+            </Link>
         </>
     );
 
-  return (
-    <div>
+    return (
         <div>
             <div>
-                <h1>Forge Focus</h1>
+                <div>
+                    <h1>Forge Focus</h1>
+                </div>
+                <h2>
+                    {currentUser ? (`Welcome ${currentUser.username}`) : (
+                        "Forge Ahead with Precision: Setting Goals, Refining Tasks.")}
+                </h2>
             </div>
-            <h2>
-                {currentUser ? ('Welcome ${currentUser.username}') : (
-                    "Forge Ahead with Precision: Setting Goals, Refining Tasks.")}
-            </h2>
+            {!currentUser && <About />}
+            <div>
+                {currentUser ? (signedInButtons) : (signedOutButtons)}
+            </div>
         </div>
-        {!currentUser && <About />}
-        <div>
-            {currentUser ? (signedInButtons) : (signedOutButtons)}
-        </div>
-    </div>
-  )
+        )
 }
 
 export default Home
