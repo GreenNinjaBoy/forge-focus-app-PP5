@@ -44,21 +44,27 @@ const NavBar = () => {
         </>
     );
 
-   return (
-        <Navbar bg="light" expand="md">
-            <Container>
-                <Navbar.Brand className='mr-auto' to="#home">ForgeFocus</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ml-auto">
-                        <Nav.Link to="/home">About</Nav.Link>
-                        <Nav.Link to="/Signin">Signup/Login</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
+    return (
+        <Navbar expanded={expanded} expand="md" fixed="top">
+            <NavLink to="/">
+            <div>
+                <div>
+                <h2>Forge Focus</h2>
+                </div>
+            </div>
+        </NavLink>
+            <Navbar.Toggle
+            ref={ref}
+            onClick={() => setExpanded(!expanded)}
+            aria-controls="basic-navbar-nav"
+            />
+            <Navbar.Collapse id="basic-navbar-nav">
+            <Nav>
+                {currentUser ? (loggedInLinks) : (loggedOutLinks)}
+            </Nav>
+            </Navbar.Collapse>
         </Navbar>
     )
 }
-
 export default NavBar
 
