@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import styles from '../styles/NavBar.module.css';
 import { useCurrentUser, useSetCurrentUserContext } from '../context/CurrentUserContext';
 import axios from 'axios';
 import { removeTokenTimestamp } from '../utils/Utils';
 import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../context/GlobalMessageContext';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
 
@@ -32,7 +33,7 @@ const NavBar = () => {
 
     const loggedOutLinks = (
         <>
-        <NavLink to="/signin"> Sign In</NavLink>
+        <NavLink className={styles.Link} to="/signin"> Sign In</NavLink>
         </>
     );
 
@@ -45,7 +46,7 @@ const NavBar = () => {
     );
 
     return (
-        <Navbar expanded={expanded} expand="md" fixed="top">
+        <Navbar expanded={expanded} expand="md" fixed="top" className={styles.Header}>
             <NavLink to="/">
             <div>
                 <div>
@@ -59,7 +60,7 @@ const NavBar = () => {
             aria-controls="basic-navbar-nav"
             />
             <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
+            <Nav className={styles.NavLinks}>
                 {currentUser ? (loggedInLinks) : (loggedOutLinks)}
             </Nav>
             </Navbar.Collapse>
@@ -67,4 +68,3 @@ const NavBar = () => {
     )
 }
 export default NavBar
-
