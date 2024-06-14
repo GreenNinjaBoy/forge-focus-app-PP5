@@ -1,11 +1,36 @@
-import React from 'react'
-import { Navbar, Container, Nav } from 'react-bootstrap'
-import useClickOutsideToggle from '../hooks/useClickOutsideToggle'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { useCurrentUser, useSetCurrentUserContext } from '../context/CurrentUserContext';
+import axios from 'axios';
+import { removeTokenTimestamp } from '../utils/Utils';
+import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../context/GlobalMessageContext';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
 
 const NavBar = () => {
 
-    const {expand, setExpand, ref} = useClickOutsideToggle();
+    const {expanded, setExpanded, ref} = useClickOutsideToggle();
+
+    const currentUser = useCurrentUser();
+    const setCurrentUser = useSetCurrentUserContext();
+
+    const setShowGlobalSuccess = useSetShowGlobalSuccess();
+    const setGlobalSuccessMessage = useSetGlobalSuccessMessage();
+
+    const handleSignout = async () => {
+        try {
+            await axios.post(`dj-rest-auth/logout/`);
+            setGlobalSuccessMessage("Successfully Signed out..");
+            setShowGlobalSuccess(true);
+            setCurrentUser(null);
+            removeTokenTimestamp();
+        } catch(err) {
+            console.log(err)
+        }
+    }
+
+    
 
     return (
         <Navbar bg="light" expand="md">

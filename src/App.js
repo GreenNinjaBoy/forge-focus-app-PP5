@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch,} from 'react-router-dom/cjs/reac
 import './api/axiosDefaults';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom';
 import NavBar from './components/NavBar';
+import Signin from './pages/auth/Signin';
 import Home from './pages/Home';
 import SuccessMessage from './components/SuccessMessage';
 import Footer from './components/Footer';
