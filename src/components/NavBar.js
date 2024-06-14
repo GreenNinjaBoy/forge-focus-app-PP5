@@ -30,9 +30,21 @@ const NavBar = () => {
         }
     }
 
-    
+    const loggedOutLinks = (
+        <>
+        <NavLink to="/signin"> Sign In</NavLink>
+        </>
+    );
 
-    return (
+    const loggedInLinks = (
+        <>
+        <NavLink to="/refine">Refine Yourself</NavLink>
+        <NavLink to="/organise">Organise</NavLink>
+        <NavLink onClick={handleSignout} to="/"> Sign Out</NavLink>
+        </>
+    );
+
+   return (
         <Navbar bg="light" expand="md">
             <Container>
                 <Navbar.Brand className='mr-auto' to="#home">ForgeFocus</Navbar.Brand>
