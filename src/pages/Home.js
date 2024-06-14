@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import {useCurrentUser} from '../context/CurrentUserContext';
+import pagestyles from '../styles/Page.module.css'; 
 import About from './About';
 
 const Home = () => {
@@ -27,7 +28,7 @@ const Home = () => {
     );
 
     return (
-        <div>
+        <div className={pagestyles.TitleContainer}>
             <div>
                 <div>
                     <h1>Forge Focus</h1>

@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Route, Switch,} from 'react-router-dom/cjs/reac
 import './api/axiosDefaults';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom';
 import NavBar from './components/NavBar';
-import Signin from './pages/auth/Signin';
 import Home from './pages/Home';
 import SuccessMessage from './components/SuccessMessage';
 import Footer from './components/Footer';
@@ -16,7 +15,7 @@ import TakeSteps from './pages/steps/TakeSteps';
 import NotFound from './NotFound';
 import { useEffect, useState } from 'react';
 import { useCurrentUser } from './context/CurrentUserContext';
-import './App.css';
+import styles from './App.css';
 
 
 function App() {
@@ -39,38 +38,40 @@ function App() {
   }, [currentUser])
 
   return (
-    <div>
-        {tokensChecked ? (
-        <Router>
-        <NavBar />
-        <SuccessMessage />
-        <Switch>
-          <Route exact path="/" render={() => <Home />} />
-          <Route exact path="/signin" render={() => <SignIn />} />
-          <Route exact path="/organise" render={() => (
-            authenticatedUser ? ( <Organise /> ) : ( <Redirect to={{pathname: "/signin"}} />)
-          )} />
-          <Route exact path="/orgasnise" render={() => (
-            authenticatedUser ? ( <Miscellaneous /> ) : ( <Redirect to={{pathname: "/signin"}} />)
-          )} />
-          <Route exact path="/refine/create" render={() => (
-            authenticatedUser ? ( <Refinement /> ) : ( <Redirect to={{pathname: "/signin"}} />)
-          )} />
-          <Route exact path="/refine/:id" render={() => (
-            authenticatedUser? ( <Refine /> ) : ( <Redirect to={{pathname: "/signin"}} />)
-          )} />
-          <Route exact path="/steps" render={() => (
-            authenticatedUser ? ( <TakeSteps /> ) : ( <Redirect to={{pathname: "/signin"}} />)
-          )} />
-          <Route render={() => <NotFound />} />
-        </Switch>
-      </Router>
-            ) : (
-              <div>
-                Just checking authentication status ....
-              </div>
-            )}
-        <Footer />
+    <div className={styles.App}>
+      <div>
+          {tokensChecked ? (
+          <Router className={styles.App}>
+          <NavBar />
+          <SuccessMessage />
+          <Switch>
+            <Route exact path="/" render={() => <Home />} />
+            <Route exact path="/signin" render={() => <SignIn />} />
+            <Route exact path="/organise" render={() => (
+              authenticatedUser ? ( <Organise /> ) : ( <Redirect to={{pathname: "/signin"}} />)
+            )} />
+            <Route exact path="/orgasnise" render={() => (
+              authenticatedUser ? ( <Miscellaneous /> ) : ( <Redirect to={{pathname: "/signin"}} />)
+            )} />
+            <Route exact path="/refine/create" render={() => (
+              authenticatedUser ? ( <Refinement /> ) : ( <Redirect to={{pathname: "/signin"}} />)
+            )} />
+            <Route exact path="/refine/:id" render={() => (
+              authenticatedUser? ( <Refine /> ) : ( <Redirect to={{pathname: "/signin"}} />)
+            )} />
+            <Route exact path="/steps" render={() => (
+              authenticatedUser ? ( <TakeSteps /> ) : ( <Redirect to={{pathname: "/signin"}} />)
+            )} />
+            <Route render={() => <NotFound />} />
+          </Switch>
+        </Router>
+              ) : (
+                <div>
+                  Just checking authentication status ....
+                </div>
+              )}
+          <Footer />
+        </div>
       </div>
     );
   }
