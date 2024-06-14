@@ -29,8 +29,8 @@ const Home = () => {
 
     return (
         <div className={pagestyles.TitleContainer}>
-            <div>
-                <div>
+            <div className={pagestyles.SpaceTitle}>
+                <div className={pagestyles.Title}>
                     <h1>Forge Focus</h1>
                 </div>
                 <h2>
