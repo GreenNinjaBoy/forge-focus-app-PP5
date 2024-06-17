@@ -31,7 +31,19 @@ const UserGoalSection = (props) => {
     });
   }
 
-  
+  useEffect(() => {
+    const fecthUserGoals = async () => {
+      try {
+        const {data} = await axiosReq.get(`goals/?refine_id=${refine_id}`);
+        setUserGoals(data);
+        setHasLoaded(true);
+      } catch (err) {
+        console.log(err)
+      }
+    };
+    setHasLoaded(false);
+    fecthUserGoals();
+  }, [refine_id]);
 
 
 
