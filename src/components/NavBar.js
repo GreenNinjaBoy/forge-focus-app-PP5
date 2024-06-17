@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from '../styles/NavBar.module.css';
+import ffLogo from '../assets/ffLogo.png';
 import { useCurrentUser, useSetCurrentUserContext } from '../context/CurrentUserContext';
 import axios from 'axios';
 import { removeTokenTimestamp } from '../utils/Utils';
@@ -39,29 +40,33 @@ const NavBar = () => {
 
     const loggedInLinks = (
         <>
-        <NavLink to="/refine">Refine Yourself</NavLink>
-        <NavLink to="/organise">Organise</NavLink>
-        <NavLink onClick={handleSignout} to="/"> Sign Out</NavLink>
+        <NavLink className={styles.Link} to="/refine">Refine Yourself</NavLink>
+        <NavLink className={styles.Link}to="/organise">Organise</NavLink>
+        <NavLink className={styles.Link}onClick={handleSignout} to="/"> Sign Out</NavLink>
         </>
     );
 
     return (
         <Navbar expanded={expanded} expand="md" fixed="top" className={styles.Header}>
             <NavLink to="/">
-            <div>
+            <div className={styles.LogoContainer}>
+                <img
+                    src={ffLogo}
+                    alt="Forge Focus"
+                    className={styles.Logo}/>
                 <div>
-                <h2>Forge Focus</h2>
+                <h2 className={styles.LogoName}>Forge Focus</h2>
                 </div>
             </div>
-        </NavLink>
+            </NavLink>
             <Navbar.Toggle
             ref={ref}
             onClick={() => setExpanded(!expanded)}
             aria-controls="basic-navbar-nav"
             />
-            <Navbar.Collapse id="basic-navbar-nav">
+            <Navbar.Collapse id="basic-navbar-nav" className={styles.DesktopLinks}>
             <Nav className={styles.NavLinks}>
-                {currentUser ? (loggedInLinks) : (loggedOutLinks)}
+            {currentUser ? (loggedInLinks) : (loggedOutLinks)}
             </Nav>
             </Navbar.Collapse>
         </Navbar>
