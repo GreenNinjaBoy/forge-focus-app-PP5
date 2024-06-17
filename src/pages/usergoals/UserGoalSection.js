@@ -45,7 +45,19 @@ const UserGoalSection = (props) => {
     fecthUserGoals();
   }, [refine_id]);
 
+  useEffect (() => {
+    const getCurrentUserGoal = () => {
+      const userGoal - usergoals.results.filter((userGoal) => userGoal.id === userGoal_id)[0];
+      setCurrentUserGoal(userGoal)
+    };
+    if (hasLoaded && goal_id) {
+      getCurrentUserGoal();
+    } else {
+      setCurrentUserGoal();
+    }
+  }, [userGaol_id, hasLoaded, userGoals]);
 
+  
 
   return (
     <div>UserGoalSection</div>
