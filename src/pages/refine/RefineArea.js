@@ -46,6 +46,16 @@ const RefineArea = ( {id} ) => {
     fetchRefine();
   }, [history, id])
 
+  function RefineContext() {
+    if (RefineState==='view') {
+      return <RefineView {...refineData} setRefineData={setRefineData} setRefineState={setRefineState}/>
+    } else if (refineState==='edit') {
+      return <RefineEdit {...refineData} id={id} setRefineData={setRefineData} setRefineState={setRefineState}/>
+    } else if (RefineState==='delete') {
+      return <RefineDelete {...refineData} id={id} setRefineState={setRefineState}/>
+    }
+  };
+
   
   return (
     <div>RefineArea</div>
