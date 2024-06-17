@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import { Alert } from "react-bootstrap";
-import {Button} from "react-bootstrap";
-import { Form } from "react-bootstrap";
+import pageStyles from '../../styles/Page.module.css'
+import formStyles from '../../styles/Form.module.css'
+import { Alert, Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import {useCurrentUser, useSetCurrentUser} from '../../context/CurrentUserContext';
 import axios from "axios";
@@ -49,28 +49,28 @@ function Signin() {
     };
 
     return (
-    <div>
-        <div>
-            <div>
+    <div className={pageStyles.PageContainer}>
+        <div className={pageStyles.SpaceTitle}>
+            <div className={pageStyles.Title}>
             <img/>
             <h1>Log Into Your user Account</h1>
             </div>
         </div>
-        <div>
+        <div className={`${pageStyles.ContentContainer} ${formStyles.FormContainer}`}>
         <Form>
-         {errors.non_field_errors?.map((message, idx) => (
+        {errors.non_field_errors?.map((message, idx) => (
             <Alert key={idx}>
-              {message}
+            {message}
             </Alert>
-          ))}
+        ))}
 
-          {errors.username?.map((message, idx) => (
+        {errors.username?.map((message, idx) => (
             <Alert key={idx}>
-              {message}
+            {message}
             </Alert>
-          ))}
-          <Form.Group controlId="username">
-            <Form.Label>Username:</Form.Label>
+        ))}
+        <Form.Group controlId="username" className={formStyles.FormGroup}>
+            <Form.Label className={formStyles.FormLabel}>Username:</Form.Label>
             <Form.Control
             type="text"
             placeholder="Enter your username"
@@ -81,12 +81,12 @@ function Signin() {
             </Form.Group>
 
             {errors.password?.map((message, idx) => (
-            <Alert key={idx}>
+            <Alert key={idx} className={formStyles.ErrorAlert}>
                 {message}
             </Alert>
             ))}
-        <Form.Group controlId="password">
-            <Form.Label>Password:</Form.Label>
+        <Form.Group controlId="password" className={`${formStyles.FormGroup} ${formStyles.FinalGroup}`}>
+            <Form.Label className={formStyles.FormLabel}>Password:</Form.Label>
             <Form.Control
                 type="password"
                 placeholder="Password"
@@ -96,7 +96,7 @@ function Signin() {
             />
             </Form.Group>
 
-            <Button type="submit">
+            <Button className={`${formStyles.SubmitButton}`} type="submit">
             Sign In
             </Button>
         </Form>
