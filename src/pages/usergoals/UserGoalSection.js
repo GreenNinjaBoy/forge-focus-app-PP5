@@ -47,7 +47,7 @@ const UserGoalSection = (props) => {
 
   useEffect (() => {
     const getCurrentUserGoal = () => {
-      const userGoal - usergoals.results.filter((userGoal) => userGoal.id === userGoal_id)[0];
+      const userGoal = usergoals.results.filter((userGoal) => userGoal.id === userGoal_id)[0];
       setCurrentUserGoal(userGoal)
     };
     if (hasLoaded && goal_id) {
@@ -57,7 +57,7 @@ const UserGoalSection = (props) => {
     }
   }, [userGaol_id, hasLoaded, userGoals]);
 
-  
+
 
   return (
     <div>UserGoalSection</div>
