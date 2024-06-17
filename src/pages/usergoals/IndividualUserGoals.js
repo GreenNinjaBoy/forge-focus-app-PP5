@@ -30,7 +30,22 @@ const IndividualUserGoals = (props) => {
 
   
   return (
-    <div>IndividualUserGoals</div>
+    <Card key={usergoals.id}>
+      <Card.Header>
+        <ContextAwareToggle as={Card.Header} eventkey={goal.id}>
+          <h3>{usergoal.title}</h3>
+        </ContextAwareToggle>
+      </Card.Header>
+      <Accordion.Collapse eventKey={usergaol.id}>
+        <Card.Body>
+          <UserGoalContext />
+          <div>
+            <h3>Assignments for your goal</h3>
+            <AssignmentList usergoal_id={usergoal.id} refine_id={refine_id} type="goal" />
+          </div>
+        </Card.Body>
+      </Accordion.Collapse>
+    </Card>
   )
 }
 

@@ -1,5 +1,5 @@
 .Header {
-    background-color: blueviolet;
+    background-color: #7fbc92;
     height: 55px;
     align-items: normal;
 }
@@ -17,7 +17,7 @@
     height: 55px;
     right: 0px;
     padding: 10px, 20px 5px 20px;
-    background-color: azure;
+    background-color: #7fbc92;
     text-align: left;
     align-items: center;
     border-bottom-left-radius: 5px;

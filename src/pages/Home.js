@@ -35,7 +35,7 @@ const Home = () => {
                 </div>
                 <h2>
                     {currentUser ? (`Welcome ${currentUser.username}`) : (
-                        "Forge Ahead with Precision: Setting Goals, Refining Tasks.")}
+                        "Forge Ahead with Precision")}
                 </h2>
             </div>
             {!currentUser && <About />}

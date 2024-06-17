@@ -1,5 +1,5 @@
 .TitleContainer {
-    background-image: url(../assets/ff-background.webp);
+   background-color: #C6D3E3;
     background-size: cover;
     height: 1000px;
 }
@@ -16,5 +16,13 @@
 }
 
 .SpaceTitle > h2 {
-    color: red
+    color: #7fbc92;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.title > h1 {
+    color: #7fbc92;
+    font-size: 1.5rem;
+    text-align: center;
 }
