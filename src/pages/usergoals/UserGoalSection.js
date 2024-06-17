@@ -55,12 +55,60 @@ const UserGoalSection = (props) => {
     } else {
       setCurrentUserGoal();
     }
-  }, [userGaol_id, hasLoaded, userGoals]);
+  }, [userGoal_id, hasLoaded, userGoals]);
 
+  function ContextAwareToggle({ children, eventKey, callBack}) {
+    const openUserGoal = () => {
+      if (eventKey===userGoal_id) {
+        setKeyParameters({
+          ...keyParameters,
+          userGoal_id: '',
+        });
+      } else {
+        setKeyParameters({
+          ...keyParameters,
+          userGoal_id: eventKey,
+        });
+        setUserGoalState("view");
+      }
+    };
 
+    return (
+      <div
+        style={{
+          color: eventKey===userGoal_id ? '#3c159c' : 'black',
+          fontWeight: eventKey===userGoal_id ? 'bold' : 'normal'}}
+          onClick={openUserGoal}
+          ariel-label={eventKey===userGoal_id ? 'Click to open your goal' : 'Click to close your goal'}
+          >
+            {children}
+            <div>
+              {eventKey=== userGoal_id ? (
+                <i className='fa-solid fa-angle-right'></i>
+              ): (
+                <i className='fa-solid fa-angle-left'></i>
+              )}
+            </div>
+      </div>
+    );
+  }
+
+  function UserGoalContext () {
+    if (userGoalState==='view') {
+      return currentUserGoal ? (
+        <>
+        <UserGoalsView {...currentUserGoal} userGoals={userGoals} setCurrentUserGoal={setCurrentUserGoal} setUserGoalState={setUserGoalState} />
+        <div>
+          <h3>Assignments for your goal</h3>
+          <AssignmentList refine_id={refine_id} userGoal_id={userGoal_id} type='goal'/>
+        </div>
+        </>
+      )
+    }
+  }
 
   return (
-    <div>UserGoalSection</div>
+    
   )
 }
 
