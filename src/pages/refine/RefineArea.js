@@ -58,7 +58,16 @@ const RefineArea = ( {id} ) => {
 
   
   return (
-    <div>RefineArea</div>
+    <div>
+      {hasLoaded ? (
+        <FocusContext />
+      ) : (
+        <div>
+          <Spinner animation="border" />
+          <p>Loading Refinement details ...</p>
+        </div>
+      )}
+    </div>
   )
 }
 
