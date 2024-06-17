@@ -1,6 +1,22 @@
 import React from 'react'
 
-function UserGoalsView() {
+const UserGoalsView = () => {
+  const {
+    goaltitle,
+    description,
+    value,
+    criteria,
+    achieve_by,
+    deadline_near,
+    days_remaining,
+    setUserGoalState
+  } = props;
+
+  const handleEdit = () => {
+    setUserGoalState('edit');
+  }
+
+  
   return (
     <div>UserGoalsView</div>
   )
