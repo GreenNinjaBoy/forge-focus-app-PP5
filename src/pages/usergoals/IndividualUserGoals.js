@@ -28,6 +28,31 @@ const IndividualUserGoals = (props) => {
     }
   };
 
+  //This function was copied from react bootstrap and adjusted to suit my requirements.
+
+  function ContextAwareToggle({ children, eventKey, callback}) {
+    const currentEventKey = useContext(AccordionContext);
+    const decoratedOnClick = useAccordionToggle(
+      eventKey,
+      () => callback && callback(eventKey),
+    );
+    const isCurrentEventKey = currentEventKey === eventKey;
+    return (
+      <div
+        style={{
+          color: isCurrentEventKey ? '#3c159c' : 'black',
+          fontweight: isCurrentEventKey ? 'bold' : 'normal'}}
+        onClick={decoratedOnClick}
+      >
+        {children}
+        {isCurrentEventKey ? (
+          <i className='fa-solid fa-angle-down'></i>
+        ) : (
+          <i className='fa-solid fa-angle-up'></i>
+        )}
+      </div>
+    );
+  }
   
   return (
     <Card key={usergoals.id}>
@@ -36,7 +61,7 @@ const IndividualUserGoals = (props) => {
           <h3>{usergoal.title}</h3>
         </ContextAwareToggle>
       </Card.Header>
-      <Accordion.Collapse eventKey={usergaol.id}>
+      <Accordion.Collapse eventKey={usergoal.id}>
         <Card.Body>
           <UserGoalContext />
           <div>

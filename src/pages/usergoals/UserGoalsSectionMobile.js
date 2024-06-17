@@ -88,7 +88,7 @@ const UserGoalsSectionMobile = (props) => {
         </Card.Header>
         <Accordion.Collapse eventKey="999">
           <Card.Body>
-            <UserGoalCreate usergoals={usergoals} setUserGoals={setGoals} setKeyParameters={setKeyParameters} keyParameters={keyParameters}/>
+            <UserGoalCreate usergoals={usergoals} setUserGoals={setUserGoals} setKeyParameters={setKeyParameters} keyParameters={keyParameters}/>
           </Card.Body>
         </Accordion.Collapse>
       </Card>
