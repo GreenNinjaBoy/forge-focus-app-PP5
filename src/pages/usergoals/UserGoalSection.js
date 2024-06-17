@@ -103,12 +103,66 @@ const UserGoalSection = (props) => {
           <AssignmentList refine_id={refine_id} userGoal_id={userGoal_id} type='goal'/>
         </div>
         </>
+      ) : (
+        usergoals.results.length>0 ? (
+          <div>
+            Click to view goal and any nested assignments.
+          </div>
+        ) : (
+          <div>
+            Create a new goal
+          </div>
+        )
       )
+    } else if (userGoalState==='create') {
+      return <UserGoalCreate usergoals={usergoals} setUserGoals={setUserGoals} setUserGoalState={setUserGoalState} setKeyParameters={setKeyParameters} keyParameters={keyParameters}/>
+    } else if (userGoalState==='edit') {
+      return <UserGoalEdit {...currentUserGoal} usergoals={usergoals} setUserGoals={setUserGoals} setUserGoalState={setUserGoalState} /> 
+    } else if (userGoalState==='delete') {
+      return <UserGoalDelete {...currentUserGoal} usergoals={usergoals} setUserGoals={setUserGoals} setUserGoalState={setUserGoalState} setKeyParameters={setKeyParameters} keyParameters={keyParameters}/>
     }
-  }
+  };
 
   return (
-    
+    <div>
+      <div>
+        <h3>Goal List</h3>
+        <p>Select a goal to viewe more</p>
+        {hasLoaded ? (
+          usergoals.results.length>0 ? (
+            usergoals.results.map( usergoal =>
+            <ContextAwareToggle eventKey={usergoal.id} key={usergoal.id}>
+              <p>{userGoal.title}</p>
+            </ContextAwareToggle>
+          ))
+        ) : (
+          <div>
+            <p>No goals yet</p>
+          </div>
+        )
+      ) : (
+        <div>
+              <Spinner animation="border" />
+              <p>We are just loading your goals</p>
+            </div>
+          )
+          <Button onClick={handleCreate}>
+            <div>
+              Add a goal
+            </div>
+          </Button>
+      </div>
+      <div>
+        {hasLoaded ? (
+          <GoalContext />
+        ) : (
+          <div className={styles.SpinnerContainer}>
+            <Spinner animation="border" />
+            <p>Just loading ...</p>
+        </div>
+        )}
+      </div>
+    </div>
   )
 }
 
