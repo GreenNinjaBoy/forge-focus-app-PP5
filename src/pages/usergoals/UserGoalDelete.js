@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button } from 'bootstrap';
 import { axiosReq } from '../../api/axiosDefaults';
-import { useGlobalSuccessMessage, useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../context/GlobalMessageContext';
+import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../context/GlobalMessageContext';
 
-function UserGoalDelete() {
+const UserGoalDelete = ( props ) => {
   const {
     id,
     title,
@@ -15,9 +15,9 @@ function UserGoalDelete() {
   } = props
 
   const setShowGlobalSuccess = useSetShowGlobalSuccess();
-  const setGlobalSuccessMessage = useGlobalSuccessMessage();
+  const setGlobalSuccessMessage = useSetGlobalSuccessMessage();
 
-  const goalList = userGoals.results;
+  const goalList = usergoals.results;
 
   const handleCancel = async () => {
     setUserGoalsState('view');
