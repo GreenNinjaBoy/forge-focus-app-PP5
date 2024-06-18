@@ -1,8 +1,8 @@
 import React from 'react';
 import {axiosReq} from '../../api/axiosDefaults';
-import {link} from 'react-router-dom/cjs/react-router-dom';
+import {Link} from 'react-router-dom/cjs/react-router-dom';
 import {useSetGlobalSuccessMessage, useSetGlobalSuccessMessage, useSetShowGlobalSuccess} from '../../context/GlobalMessageContext';
-import axios from 'axios';
+
 
 const StepsTask = (props) => {
   const {
@@ -132,11 +132,44 @@ const StepsTask = (props) => {
     }
   };
 
-  
+  function LinkContext() {
+    if (refine) {
+      return (
+        <Link to={`/refine/${refine}`}>
+          <img alt='refine'/>
+        </Link>
+      )
+    } else {
+      return (
+        <Link to={`/miscellaneous`}>
+          <img alt='refine' />
+        </Link>
+      )
     }
+  };
   return (
-    <div>StepsTask</div>
+    <div>
+      <div>
+        <LinkContext/>
+      </div>
+      <div>
+        {achieved ? (
+          <h3>{name}</h3>
+        ) : (
+          <h3>{name}</h3>
+        )}
+        <p>{context}</p>
+        <AchieveByContext/>
+        <UserGoalAchiveByContext/>
+      </div>
+      <div>
+        {type==="active" ? (
+          <>
+          <input type="checkbox" id={`today-${id}`} name="today" />
+        )}
+      </div>
+    </div>
   )
-}
+};
 
 export default StepsTask
