@@ -104,6 +104,20 @@ const StepsTask = (props) => {
     }
   }
 
+  function AchieveByContext () {
+    if (achieve_by_info) {
+      if (achieve_by_info.includes("OVERDUE")) {
+        return <p>{achieve_by_info}</p>
+      } else if (achieve_by_info.includes("TODAY") || achieve_by_info.includes("tomorrow")) {
+        return <p>{achieve_by_info}</p>
+      } else {
+        return <p>{achieve_by_info}</p>
+      }
+    } else {
+      return null
+    }
+  };
+
   
     }
   return (
