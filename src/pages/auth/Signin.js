@@ -57,7 +57,7 @@ function Signin() {
             </div>
         </div>
         <div className={`${pageStyles.ContentContainer} ${formStyles.FormContainer}`}>
-        <Form>
+        <Form onSubmit={handleSubmit}>
         {errors.non_field_errors?.map((message, idx) => (
             <Alert key={idx}>
             {message}

@@ -17,7 +17,7 @@ const Organise = () => {
           </div>      
           <div>
             <Link to={'/refine/create'}>
-              Create new focus area
+              Create new refinement
             </Link>
           </div>
           <div >
