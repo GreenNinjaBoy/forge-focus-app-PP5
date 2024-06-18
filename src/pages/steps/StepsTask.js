@@ -118,6 +118,20 @@ const StepsTask = (props) => {
     }
   };
 
+  function UserGoalAchiveByContext () {
+    if (usergoal_achieve_by_info) {
+      if(usergoal_achieve_by_info.includes("OVERDUE")) {
+        return <p>{usergoal_achieve_by_info}</p>
+      } else if (usergoal_achieve_by_info.includes("TODAY") || usergoal_achieve_by_info.includes("TOMORROW")) {
+        return <p>{usergoal_achieve_by_info}</p>
+      } else {
+        return <P>{usergoal_achieve_by_info}</P>
+      }
+    } else {
+      return null
+    }
+  };
+
   
     }
   return (
