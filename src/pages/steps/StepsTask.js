@@ -2,6 +2,7 @@ import React from 'react';
 import {axiosReq} from '../../api/axiosDefaults';
 import {link} from 'react-router-dom/cjs/react-router-dom';
 import {useSetGlobalSuccessMessage, useSetGlobalSuccessMessage, useSetShowGlobalSuccess} from '../../context/GlobalMessageContext';
+import axios from 'axios';
 
 const StepsTask = (props) => {
   const {
@@ -62,6 +63,47 @@ const StepsTask = (props) => {
       }
     }
   }
+  const handleCompleteToggle = async (event) => {
+    const checkbox = event.target;
+    if (checkbox.check) {
+      try {
+        const {data} = await axiosReq.patch(`/assignments/${id}`, { achieved: true});
+        setGlobalSuccessMessage("You have achieved your assignment well done!!");
+        setShowGlobalSuccess(true);
+        const activeList = activeAssignments.results;
+        const assignmentIndex = activeList.findIndex(taskv=> taskv.id === id);
+        activeList[assignmentIndex] = data;
+        setActiveAssignments(
+          {
+            results: [
+              ...activeList
+            ]
+          }
+        );
+      } catch(err) {
+        console.log(err)
+      }
+    } else {
+      try {
+        const {data} = await axiosReq.patch(`/assignments/${id}`, { achieved: false});
+        setGlobalSuccessMessage("Assignment has been reset!");
+        setShowGlobalSuccess(true);
+        const activeList = activeAssignments.results;
+        const assignmentIndex = activeList.findIndex(taskv=> taskv.id === id);
+        activeList[assignmentIndex] = data;
+        setActiveAssignments(
+          {
+            results: [
+              ...activeList
+            ]
+          }
+        );
+      } catch(err) {
+        console.log(err)
+      }
+    }
+  }
+
   
     }
   return (
