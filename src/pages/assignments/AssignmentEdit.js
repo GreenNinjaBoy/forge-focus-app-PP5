@@ -16,7 +16,17 @@ const AssignmentEdit = (props) => {
     type
   } = props;
 
-  
+  const setShowGlobalSuccess = useSetShowGlobalSuccess();
+  const setGlobalSuccessMessage = useSetGlobalSuccessMessage();  
+
+  const convertedDate = () => {
+    if (achieve_by !== null){
+      const dateWithTime = new Date(achieve_by).toISOString()
+      return dateWithTime.split('T')[0];
+    } else {
+      return '';
+    } 
+  };
 
   return (
     <div>AssignmentEdit</div>
