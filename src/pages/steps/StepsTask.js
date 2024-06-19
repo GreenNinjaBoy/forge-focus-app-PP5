@@ -165,11 +165,27 @@ const StepsTask = (props) => {
       <div>
         {type==="active" ? (
           <>
-          <input type="checkbox" id={`today-${id}`} name="today" />
+          <input type="checkbox" id={`today-${id}`} name="today" onChange={handleTodayToggle} checked={today} />
+          <label htmlFor={`achieved-${id}`}>Today</label>
+          {achieved? <p>DONE</p> :null}
+          </>
+        ) : null
+        }
+        {type==="today" && (
+          <>
+          <input type="checkbox" id={`achieved-${id}`} name="today" onChange={handleTodayToggle} />
+          <label htmlFor={`achieved-${id}`}>Done</label>
+          </>
+        )}
+        {type==="achieved" && (
+          <>
+          <input type="checkbox" id={`achieved-${id}`} name='today' onChange={handleCompleteToggle} checked/>
+          <label htmlFor={`achieved-${id}`}>Done</label>
+          </>
         )}
       </div>
     </div>
   )
-};
+}
 
 export default StepsTask
