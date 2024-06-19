@@ -94,7 +94,58 @@ const AssignmentEdit = (props) => {
   };
 
   return (
-    <div>AssignmentEdit</div>
+    <div>
+      <Form onSubmit={handleSubmit}>
+        <div>
+
+          {errors.name?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group controlId={`new-name-${type}`}>
+            <Form.Label >Assignment:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Task name"
+              name="newName"
+              value={newName}
+              onChange={handleChange}
+            />
+          </Form.Group>
+
+          {errors.deadline?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+
+          <Form.Group controlId={`new-deadline-${type}`}>
+            <Form.Label>Achieve By:</Form.Label>
+            <Form.Control
+              type="date"
+              name="newDeadline"
+              value={newAchieve_by}
+              onChange={handleChange}
+            />
+          </Form.Group>
+
+        </div>
+        {errors.non_field_errors?.map((message, idx) => (
+          <Alert key={idx}>
+            {message}
+          </Alert>
+        ))}
+        <div>
+          <button type="submit" aria-label="Click to save assignment">
+          <i className="fa-solid fa-floppy-disk"></i>
+          </button>
+          <button onClick={handleCancel} aria-label="Click to cancel">
+            <i className="fa-regular fa-rectangle-xmark"></i>
+          </button>
+        </div>
+      </Form>
+    </div>
   )
 }
 
