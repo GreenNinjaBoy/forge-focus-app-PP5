@@ -57,6 +57,23 @@ const AssignmentEdit = (props) => {
     setAssignmentState("view");
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('name', newName)
+    if (refine) {
+      formData.append('refine', newRefine)
+    };
+    if (usergoal) {
+      formData.append('usergoal', newUserGoal)
+    }
+    if (newAchieve_by) {
+      const parts = newAchieve_by.split('-');
+      const date = new Date(parts[0], parts[1] - 1, parts[2], 12);
+      const djangoDate = date.toISOString();
+      formData.append('achieve_by', djangoDate);
+    }
+
   return (
     <div>AssignmentEdit</div>
   )
