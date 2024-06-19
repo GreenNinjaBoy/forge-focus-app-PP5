@@ -46,6 +46,17 @@ const AssignmentEdit = (props) => {
 
   const [errors, setErrors] = useState({});
 
+  const handleChange = (event) => {
+    setAssignmentData({
+      ...setAssignmentData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleCancel = () => {
+    setAssignmentState("view");
+  };
+
   return (
     <div>AssignmentEdit</div>
   )
