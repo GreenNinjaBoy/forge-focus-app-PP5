@@ -72,9 +72,72 @@ const AssignmentCreate = ( props) => {
       }
     }
   };
-  
+
+  const handleCancel = (event) => {
+    event.preventDefault();
+    setErrors({});
+    setAssingmentData({
+      name: '',
+      refine: refine_id,
+      usergoal: usergoal_id,
+      achieve_by: '',
+    });
+  };
+
   return (
-    <div>AssignmentCreate</div>
+    <div>
+      <h4>Add {type} Assingment </h4>
+      <Form onSubmit={handleSubmit}>
+        <div>
+
+          {errors.name?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group controlId={`name-${type}`}>
+            <Form.Label>Assingment:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Assingment name"
+              name="name"
+              value={name}
+              onChange={handleChange}
+            />
+          </Form.Group>
+
+          {errors.deadline?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+
+          <Form.Group controlId={`deadline-${type}`}>
+            <Form.Label>Deadline:</Form.Label>
+            <Form.Control
+              type="date"
+              name="deadline"
+              value={achieve_by}
+              onChange={handleChange}
+            />
+          </Form.Group>
+
+          {errors.non_field_errors?.map((message, idx) => (
+            <Alert key={idx}>
+              {message}
+            </Alert>
+          ))}
+        </div>
+        <div>
+          <button type="submit" aria-label="save assignment">
+          <i className="fa-solid fa-floppy-disk"></i>
+          </button>
+          <button onClick={handleCancel} aria-label="Click to cancel">
+            <i className="fa-regular fa-rectangle-xmark"></i>
+          </button>
+        </div>
+      </Form>
+    </div>
   )
 }
 

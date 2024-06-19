@@ -103,7 +103,7 @@ const TakeStepsDesktop = (props) => {
                   <StepsTask 
                     key={assignment.id}
                     {...assignment}
-                    activeAssignments={activeAssignemnts}
+                    activeAssignments={activeAssignments}
                     setActiveAssignments={setActiveAssignments} 
                     type="active"/>
                 ))
@@ -136,7 +136,7 @@ const TakeStepsDesktop = (props) => {
                   type="today"/>
               ))
             ) : (
-              <p className={styles.AddPadding}>No assignments set for today!</p>
+              <p>No assignments set for today!</p>
             )
           ) : (
             <div>

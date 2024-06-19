@@ -1,10 +1,11 @@
-import React from 'react'
 import React, { useEffect, useState } from 'react';
 import { useCheckedUser, useCurrentUser } from '../../context/CurrentUserContext.js';
 import { Button, Modal } from 'react-bootstrap';
+import TakeStepsMobile from './TakeStepsMobile.js'
+import TakeStepsDesktop from './TakeStepsDesktop.js'
 import { axiosReq, axiosRes } from '../../api/axiosDefaults.js';
 import AssignmentsActionCreate from '../assignments/AssignmentsActionCreate.js';
-import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../contexts/GlobalMessageContext.js';
+import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../context/GlobalMessageContext.js';
 
 const TakeSteps = () => {
   const currentUser = useCurrentUser();

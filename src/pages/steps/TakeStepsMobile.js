@@ -3,7 +3,7 @@ import { Accordion, Card, Form, Spinner, useAccordionToggle, AccordionContext } 
 import { axiosReq } from '../../api/axiosDefaults';
 import StepsTask from './StepsTask';
 
-function TakeStepsMobile() {
+const TakeStepsMobile = ( props ) => {
   const {
     hasLoaded,
     activeAssignments,
@@ -105,9 +105,9 @@ function TakeStepsMobile() {
                     onChange={(event) => setQuery(event.target.value)}/>
                 </Form>
               </div>
-              <div className={styles.Filter}>
+              <div>
                 <label htmlFor="filter">Order by:</label>
-                <select id="filter" name="filter" onChange={handleFilter} className={styles.FilterBox}>
+                <select id="filter" name="filter" onChange={handleFilter}>
                   <option name="filter" value='?ordering=achieve_by'>Assignment deadline</option>
                   <option name="filter" value='?ordering=-refine'>Refine Area</option>
                   <option name="filter" value='?ordering=usergoal__achieve_by'> Set Goals</option>
@@ -187,7 +187,7 @@ function TakeStepsMobile() {
           </ContextAwareToggle>
         </Card.Header>
         <Accordion.Collapse eventKey="2">
-          <Card.Body className={styles.AccordionBody}>
+          <Card.Body>
             {hasLoaded ? (
               achievedList?.length>0 ? (
                 achievedList.map( assignment => (
