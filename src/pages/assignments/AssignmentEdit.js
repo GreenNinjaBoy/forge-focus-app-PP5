@@ -73,6 +73,25 @@ const AssignmentEdit = (props) => {
       const djangoDate = date.toISOString();
       formData.append('achieve_by', djangoDate);
     }
+    try {
+      const {data} = await axiosReq.put(`/assignments/${id}`, formData);
+      setGlobalSuccessMessage("Assignment Edit Successful");
+      setShowGlobalSuccess(true);
+      const assignmentIndex = assignmentList.findIndex(assignment => assignment.id === id);
+      assignmentList[assignmentIndex] = data;
+      setAssignments(
+        { results: [
+          ...assignmentList
+        ]}
+      );
+      setAssignmentState("view");
+    } catch(err){
+      console.log(err);
+      if (err.response?.status !== 401){
+        setErrors(err.response?.data);
+      }
+    }
+  };
 
   return (
     <div>AssignmentEdit</div>
