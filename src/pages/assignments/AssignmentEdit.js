@@ -28,6 +28,24 @@ const AssignmentEdit = (props) => {
     } 
   };
 
+  const assignmentList = assignments.results;
+
+  const [taskData, setAssignmentData] = useState({
+    newName: name,
+    newRefine: refine,
+    newUserGoal: usergoal,
+    newAchieve_by: convertedDate(),
+  })
+
+  const {
+    newName,
+    newRefine,
+    newUserGoal,
+    newAchieve_by,
+  } = taskData;
+
+  const [errors, setErrors] = useState({});
+
   return (
     <div>AssignmentEdit</div>
   )
