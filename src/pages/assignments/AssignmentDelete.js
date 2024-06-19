@@ -4,12 +4,11 @@ import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../conte
 
 const AssignmentDelete = (props) => {
   const {
-    const {
       id,
       name,
       assignments,
       setAssignments,
-      setAssignmentState
+      setAssignmentState,
     } = props;
   
     const setShowGlobalSuccess = useSetShowGlobalSuccess();
@@ -20,11 +19,37 @@ const AssignmentDelete = (props) => {
     const handleCancel = () => {
       setAssignmentState('view');
     };
-  }
+
+    const handleDelete = async () => {
+      try {
+        await axiosRes.delete(`/assingments/${id}`);
+        setGlobalSuccessMessage("Assignment Deleted");
+        setShowGlobalSuccess(true);
+        const assignmentIndex = assignmentList.findIndex(assignment => assignment.id === id);
+        assignmentList.splice(assignmentIndex, 1);
+        setAssignments(
+          { results: [
+            ...assignmentList
+          ]}
+        );
+      } catch(err){
+        //console.log(err)
+      }
+    };
 
 
   return (
-    <div>AssignmentDelete</div>
+    <div>
+      <p>Delete Assignment: {name}?</p>
+      <div>
+        <Button  onClick={handleCancel}>
+          Cancel
+        </Button>
+        <Button  onClick={handleDelete}>
+          Delete
+        </Button>
+      </div>
+  </div>
   )
 }
 
