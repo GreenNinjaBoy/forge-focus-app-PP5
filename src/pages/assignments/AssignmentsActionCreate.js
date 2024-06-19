@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import { Alert, Button, Form, Modal, Spinner } from 'react-bootstrap';
 import { axiosReq } from '../../api/axiosDefaults';
-import { useSetShowGlobalSuccess, useSetGlobalSuccessMessage } from '../../context/GlobalMessageContext';
+import {useSetGlobalSuccessMessage, useSetShowGlobalSuccess} from '../../context/GlobalMessageContext';
 import AssignmentList from './AssignmentList';
 
-const AssignmentsActionCreate = () => {
+const AssignmentsActionCreate = (props) => {
   const {
     activeAssignments,
     setActiveAssignments,

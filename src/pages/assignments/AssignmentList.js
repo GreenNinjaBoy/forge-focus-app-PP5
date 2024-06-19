@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { axiosReq } from '../../api/axiosDefaults';
+import { Spinner } from 'react-bootstrap';
 import IndividualAssignment from './IndividualAssignment';
 import AssignmentCreate from './AssignmentCreate';
 
@@ -40,7 +41,7 @@ const AssignmentList = ( props ) => {
     };
     setHasLoaded(false);
     fetchAssignments();
-  }, [redfine_id, userGoal_id, type]);
+  }, [refine_id, userGoal_id, type]);
 
   function CreateContext() {
     if (type==="daytoday") {
@@ -57,8 +58,8 @@ const AssignmentList = ( props ) => {
       <div>
         {hasLoaded ? (
           assignments.results.length ? (
-            assignments.results.map(task => (
-              <IndividualAssignment key={task.id} type={type} assignment={assignment} refine_id={refine_id} userGoal_id={userGoal_id} assignments={assignments} setAssignments={setAssignments}/>
+            assignments.results.map(assignment => (
+              <IndividualAssignment key={assignment.id} type={type} assignment={assignment} refine_id={refine_id} userGoal_id={userGoal_id} assignments={assignments} setAssignments={setAssignments}/>
             ))
           ) : (
             <div>
@@ -72,7 +73,7 @@ const AssignmentList = ( props ) => {
             </div>
         )}
       </div>
-      <AssignmentContext />
+      <CreateContext />
     </div>
   )
 }
