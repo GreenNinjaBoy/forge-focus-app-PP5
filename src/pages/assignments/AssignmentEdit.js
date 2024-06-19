@@ -1,6 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react';
+import { axiosReq } from '../../api/axiosDefaults';
+import { Alert, Form } from 'react-bootstrap';
+import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../context/GlobalMessageContext';
 
-function AssignmentEdit() {
+const AssignmentEdit = (props) => {
+  const {
+    id,
+    name,
+    refine,
+    usergoal,
+    achieve_by,
+    assignments,
+    setAssignments,
+    setAssignmentState,
+    type
+  } = props;
+
+  
+
   return (
     <div>AssignmentEdit</div>
   )
