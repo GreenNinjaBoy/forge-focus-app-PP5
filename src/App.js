@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch,} from 'react-router-dom/cjs/react-router-dom.min';
+import {Route, Switch,} from 'react-router-dom/cjs/react-router-dom';
 import './api/axiosDefaults';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom';
 import NavBar from './components/NavBar';
