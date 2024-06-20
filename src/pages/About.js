@@ -9,7 +9,7 @@ const About = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="holder.js/800x400?text=First slide&bg=373940"
+                        src="./assets/prieviewimage.webp"
                         alt="First slide"
                     />
                     <Carousel.Caption>
@@ -20,7 +20,7 @@ const About = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="holder.js/800x400?text=Second slide&bg=282c34"
+                        src="./assets/prieviewimage.webp"
                         alt="Second slide"
                     />
                     <Carousel.Caption>
@@ -33,7 +33,7 @@ const About = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="holder.js/800x400?text=Third slide&bg=20232a"
+                        src="./assets/prieviewimage.webp"
                         alt="Third slide"
                     />
                     <Carousel.Caption>
@@ -45,7 +45,7 @@ const About = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="holder.js/800x400?text=Fourth slide&bg=20232a"
+                        src="./assets/prieviewimage.webp"
                         alt="Fourth Slide"
                     />
                     <Carousel.Caption>
