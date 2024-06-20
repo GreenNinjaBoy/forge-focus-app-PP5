@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch,} from 'react-router-dom/cjs/react-router-dom';
+import {Route, Switch,} from 'react-router-dom/cjs/react-router-dom';
 import './api/axiosDefaults';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom';
 import NavBar from './components/NavBar';
@@ -17,6 +17,7 @@ import NotFound from './NotFound';
 import { useEffect, useState } from 'react';
 import { useCurrentUser } from './context/CurrentUserContext';
 import styles from './App.css';
+import RefineCreate from './pages/refine/RefineCreate';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   const currentUser = useCurrentUser();
   const [authenticatedUser, setAuthenticatedUser] = useState(false);
   const [tokensChecked, setTokensChecked] = useState(false);
+
   useEffect(() => {
     const checkTokens = () => {
       const refreshTokenTimeStamp = localStorage.getItem('refreshTokenTimestamp');
@@ -36,14 +38,15 @@ function App() {
     };
     checkTokens();
   }, [currentUser])
+
   return (
     <div className={styles.App}>
       <div>
+        <NavBar />
+        <SuccessMessage />
+        <div>
           {tokensChecked ? (
-          <Router className={styles.App}>
-          <NavBar />
-          <SuccessMessage />
-          <Switch>
+            <Switch>
             <Route exact path="/" render={() => <Home />} />
             <Route exact path="/signup" render={() => <Signup />} />
             <Route exact path="/signin" render={() => <SignIn />} />
@@ -54,7 +57,7 @@ function App() {
               authenticatedUser ? ( <Miscellaneous /> ) : ( <Redirect to={{pathname: "/signin"}} />)
             )} />
             <Route exact path="/refine/create" render={() => (
-              authenticatedUser ? ( <Refinement /> ) : ( <Redirect to={{pathname: "/signin"}} />)
+              authenticatedUser ? ( <RefineCreate /> ) : ( <Redirect to={{pathname: "/signin"}} />)
             )} />
             <Route exact path="/refine/:id" render={() => (
               authenticatedUser? ( <Refine /> ) : ( <Redirect to={{pathname: "/signin"}} />)
@@ -64,12 +67,12 @@ function App() {
             )} />
             <Route render={() => <NotFound />} />
           </Switch>
-        </Router>
-              ) : (
-                <div>
+      ) : (
+        <div>
                   Just checking authentication status ....
                 </div>
               )}
+          </div>
           <Footer />
         </div>
       </div>
