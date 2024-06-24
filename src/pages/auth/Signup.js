@@ -41,7 +41,7 @@ const Signup = () => {
       setShowGlobalSuccess(true);
       history.push('/signin');
     } catch(err){
-      setErrors(err.response?.data);
+      setErrors(err.response?.data || {});
     }
   };
 
