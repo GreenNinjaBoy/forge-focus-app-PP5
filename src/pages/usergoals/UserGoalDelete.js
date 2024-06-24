@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from 'bootstrap';
+import styles from '../../styles/UserGoalCreate.module.css';
+import btnStyles from '../../styles/Button.module.css';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../context/GlobalMessageContext';
 
@@ -11,7 +13,7 @@ const UserGoalDelete = ( props ) => {
     setUserGoals,
     setUserGoalsState,
     setKeyParameters,
-    KeyParameters
+    keyParameters
   } = props
 
   const setShowGlobalSuccess = useSetShowGlobalSuccess();
@@ -30,9 +32,9 @@ const UserGoalDelete = ( props ) => {
       setShowGlobalSuccess(true);
       const goalIndex = goalList.findIndex(goal => usergoals.id === id);
       goalList.splice(goalIndex, 1);
-      if (KeyParameters) {
+      if (keyParameters) {
         setKeyParameters({
-          ...KeyParameters,
+          ...keyParameters,
           userGoal_id: "",
         });
       }
@@ -48,14 +50,14 @@ const UserGoalDelete = ( props ) => {
   };
 
   return (
-    <div>
+    <div className={styles.CreateContainer}>
       <p>Are you sure you wish to delete your goal: {title}?</p>
       <p>Deleting it will also result in all tasks within this goal being deleted too.</p>
       <div>
-        <Button onClick={handleCancel}>
+        <Button className={`${btnStyles.Button} ${styles.Button}`} onClick={handleCancel}>
           Cancel
         </Button>
-        <Button onClick={handleDelete}>
+        <Button className={`${btnStyles.Button} ${styles.Button}`} onClick={handleDelete}>
           Delete Goal
         </Button>
       </div>
