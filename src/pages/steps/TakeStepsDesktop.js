@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import StepsTask from './StepsTask';
+import styles from '../../styles/TakeSteps.module.css';
+import pageStyles from '../../styles/Page.module.css';
 import { Form, Spinner } from 'react-bootstrap';
 import { axiosReq } from '../../api/axiosDefaults';
 
@@ -27,7 +29,7 @@ const TakeStepsDesktop = (props) => {
       const updateSearchList = async () => {
         try {
           setHasLoaded(false);
-          const {data} = await axiosReq.get(`/assingments/?search=${query}`);
+          const {data} = await axiosReq.get(`/assingment/?search=${query}`);
           setSearchList(data);
           setHasLoaded(true);
         }  catch(err) {
@@ -50,7 +52,7 @@ const TakeStepsDesktop = (props) => {
   useEffect(() => {
     const changeActiveAssignmentsOrder = async () => {
       try {
-        const {data} = await axiosReq.get(`/assignments/${filter}`);
+        const {data} = await axiosReq.get(`/assignment/${filter}`);
         setActiveAssignments(data);
         setHasLoaded(true);
       }  catch(err) {
@@ -62,22 +64,23 @@ const TakeStepsDesktop = (props) => {
   }, [filter, setActiveAssignments, setHasLoaded])
 
   return (
-    <div>
+    <div className={`${pageStyles.ContentContainer} ${styles.MainContainer}`}>
 
-      <div>
-        <div>
+      <div className={styles.Column}>
+        <div className={styles.TitleContainer}>
           <h2>Still to Complete</h2>
-          <div>
+          <div className={styles.SearchContainer}>
             <Form onSubmit={(event) => event.preventDefault()}>
               <Form.Control
                 type="text"
+                className={styles.SearchInput}
                 placeholder="Search assignments"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}/>
             </Form>
           </div>
-          <div>
-            <label htmlFor="filter">Order by:</label>
+          <div className={styles.Filter}>
+            <label htmlFor="filter" className={styles.FilterLabel}>Order by:</label>
             <select id="filter" name="filter" onChange={handleFilter}>
               <option name="filter" value='?ordering=achieve_by'>Assignment deadline</option>
               <option name="filter" value='?ordering=-refine'>Refine Area</option>
@@ -86,7 +89,7 @@ const TakeStepsDesktop = (props) => {
             </select>
           </div>
         </div>
-        <div>
+        <div className={styles.TasksContainer}>
           {hasLoaded ? (
             searchList.results.length>0 ? (
               searchList.results.map( assignment => (
@@ -108,11 +111,11 @@ const TakeStepsDesktop = (props) => {
                     type="active"/>
                 ))
               ) : (
-                <p>No assignemnts found.</p>
+                <p className={styles.AddPadding}>No assignemnts found.</p>
               )
             )
           ) : (
-            <div>
+            <div className={styles.SpinnerContainer}>
               <Spinner animation="border" />
               <p>Loading assignemnts</p>
             </div>
@@ -120,11 +123,11 @@ const TakeStepsDesktop = (props) => {
         </div>
       </div>
 
-      <div>
-        <div>
+      <div className={`${styles.Column} ${styles.MiddleColumn}`}>
+        <div className={styles.TitleContainer}>
           <h2>Today</h2>
         </div>
-        <div>
+        <div className={styles.TasksContainer}>
           {hasLoaded ? (
             todayList?.length>0 ? (
               todayList.map( assignment => (
@@ -136,22 +139,22 @@ const TakeStepsDesktop = (props) => {
                   type="today"/>
               ))
             ) : (
-              <p>No assignments set for today!</p>
+              <p className={styles.AddPadding}>No assignments set for today!</p>
             )
           ) : (
-            <div>
+            <div className={styles.SpinnerContainer}>
               <Spinner animation="border" />
-              <p>Assingments Loading</p>
+              <p >Assingments Loading</p>
             </div>
           )}
         </div>
       </div>
 
-      <div>
-        <div>
+      <div className={styles.Column}>
+        <div className={styles.TitleContainer}>
           <h2>Completed</h2>
         </div>
-        <div>
+        <div className={styles.TasksContainer}>
         {hasLoaded ? (
             achievedList?.length>0 ? (
               achievedList.map( assignment => (
@@ -163,10 +166,10 @@ const TakeStepsDesktop = (props) => {
                   type="achieved"/>
               ))
             ) : (
-              <p>No Completed Assignments!</p>
+              <p className={styles.AddPadding}>No Completed Assignments!</p>
             )
           ) : (
-            <div>
+            <div className={styles.SpinnerContainer}>
               <Spinner animation="border" />
               <p>Assingments Loading</p>
             </div>
