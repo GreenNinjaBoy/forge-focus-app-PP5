@@ -1,4 +1,6 @@
 import React, {useContext, useState} from 'react';
+import styles from '../../styles/UserGoal.module.css';
+import accStyles from '../../styles/Accordion.module.css';
 import { useAccordionToggle, AccordionContext } from 'react-bootstrap';
 import {Accordion, Card} from 'react-bootstrap';
 import UserGoalsView from './UserGoalsView';
@@ -38,6 +40,7 @@ const IndividualUserGoals = (props) => {
     const isCurrentEventKey = currentEventKey === eventKey;
     return (
       <div
+      className={accStyles.Header}
         style={{
           color: isCurrentEventKey ? '#3c159c' : 'black',
           fontweight: isCurrentEventKey ? 'bold' : 'normal'}}
@@ -61,9 +64,9 @@ const IndividualUserGoals = (props) => {
         </ContextAwareToggle>
       </Card.Header>
       <Accordion.Collapse eventKey={usergoals.id}>
-        <Card.Body>
+        <Card.Body className={styles.GoalBody}>
           <UserGoalContext />
-          <div>
+          <div className={styles.NestedTasks}>
             <h3>Assignments for your goal</h3>
             <AssignmentList usergoal_id={usergoals.id} refine_id={refine_id} type="goal" />
           </div>
