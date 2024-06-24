@@ -1,4 +1,8 @@
 import React, { useContext, useState } from 'react'
+import styles from '../../styles/RefineMobile.module.css';
+import pageStyles from '../../styles/Page.module.css';
+import accStyles from '../../styles/Accordion.module.css';
+import btnStyles from '../../styles/Button.module.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import { useAccordionToggle, AccordionContext } from 'react-bootstrap';
@@ -31,6 +35,7 @@ const RefineMobile = ( {id} ) => {
     const isCurrentEventKey = currentEventKey === eventKey;
     return (
       <div
+      className={accStyles.Header}
         style={{
           color: isCurrentEventKey ? '#3c159c' : 'black',
           fontWeight: isCurrentEventKey ? 'bold' : 'normal' }}
@@ -47,8 +52,8 @@ const RefineMobile = ( {id} ) => {
   }
 
   return (
-    <div>
-      <button aria-label="Click to return to the plan" onClick={handleBack}>
+    <div className={`${pageStyles.ContentContainer} ${styles.MainContainer}`}>
+      <button className={btnStyles.BackCross} aria-label="Click to return to the organiser" onClick={handleBack}>
         <i className="fa-solid fa-x"></i>
       </button>
 
@@ -62,7 +67,7 @@ const RefineMobile = ( {id} ) => {
             </ContextAwareToggle>
           </Card.Header>
           <Accordion.Collapse eventKey="0">
-            <Card.Body>
+            <Card.Body className={styles.BodyContainer}>
               <AssignmentList refine_id={refine_id} type="daytoday"/>
             </Card.Body>
           </Accordion.Collapse>
