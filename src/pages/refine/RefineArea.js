@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
+import styles from '../../styles/RefineView.module.css';
 import RefineView from './RefineView';
 import { Spinner } from 'react-bootstrap';
 import RefineEdit from './RefineEdit';
@@ -27,7 +28,7 @@ const RefineArea = ( {id} ) => {
   useEffect(() => {
     const fetchRefine = async () => {
       try {
-        const { data } = await axiosReq.get(`/Refine/${id}`)
+        const { data } = await axiosReq.get(`/refine/${id}`)
         const {name, why, image} = data;
         setRefineData({name, why, image});
         setHasLoaded(true);
@@ -58,11 +59,11 @@ const RefineArea = ( {id} ) => {
 
   
   return (
-    <div>
+    <div className={styles.FocusContainer}>
       {hasLoaded ? (
         <RefineContext />
       ) : (
-        <div>
+        <div className={styles.SpinnerContainer}>
           <Spinner animation="border" />
           <p>Loading Refinement details ...</p>
         </div>
