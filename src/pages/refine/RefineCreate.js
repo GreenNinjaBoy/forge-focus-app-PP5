@@ -1,4 +1,9 @@
 import React, {useRef, useState} from 'react';
+import pageStyles from '../../styles/Page.module.css';
+import btnStyles from '../../styles/Button.module.css';
+import formStyles from '../../styles/Form.module.css';
+import styles from '../../styles/RefineCreate.module.css';
+import defaultImage from '../../assets/default-image.webp'
 import { Alert, Button, Form, Image } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
@@ -66,28 +71,28 @@ const RefineCreate = () => {
       };
 
     return (
-    <div>
-        <div>
-        <h1>Create refinement</h1>
+    <div className={pageStyles.PageContainer}>
+        <div className={pageStyles.TitleContainer}>
+        <h1 className={pageStyles.TitleContainer}>Create refinement</h1>
       </div>
-      <div>
-        <button aria-label="Click to return to the organiser" onClick={handleBack}>
+      <div className={`${pageStyles.ContentContainer} ${styles.FormContainer}`}>
+        <button className={btnStyles.BackCross} aria-label="Click to return to the organiser" onClick={handleBack}>
           <i className="fa-solid fa-x"></i>
         </button>
         <Form onSubmit={handleSubmit}>
-          <div>
-            <Form.Group>
+          <div className={styles.FocusForm}>
+            <Form.Group className={styles.ImageGroup}>
               {errors.image?.map((message, idx) => (
                 <Alert key={idx}>
                   {message}
                 </Alert>
               ))}
               {image ? (
-                <Image src='' alt="Chosen focus image"/>
+                <Image src={image} className={styles.Image} alt="Chosen refine image"/>
               ) : (
-                <div>
-                  <div>
-                    <Image src='' alt="Default refine image"/>
+                <div  className={styles.AddImage}>
+                  <div className={styles.ImageContainer}>
+                    <Image src={defaultImage} className={styles.DefaultImage} alt="Default refine image"/>
                   </div>
                   <p>Click below to add an image</p>
                 </div>
@@ -95,57 +100,60 @@ const RefineCreate = () => {
               <Form.File
                 id="image-upload"
                 accept="image/*"
+                className={styles.FormFile}
                 onChange={handleChangeImage}
                 ref={imageInput}
                 aria-label='Click to change the refinement image'
               />
             </Form.Group>
-            <div>
+            <div className={styles.MainForm}>
               {errors.name?.map((message, idx) => (
-                <Alert key={idx}>
+                <Alert key={idx} className={formStyles.ErrorAlert}>
                   {message}
                 </Alert>
               ))}
-              <Form.Group controlId="name">
-                <Form.Label>Refine:</Form.Label>
+              <Form.Group controlId="name" className={styles.Group}>
+                <Form.Label  className={formStyles.FormLabel} >Refine:</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Give your refinement area a name"
                   name="name"
                   value={name}
                   onChange={handleChange}
+                  className={styles.ShortInput}
                 />
               </Form.Group>
 
               {errors.why?.map((message, idx) => (
-                <Alert key={idx}>
+                <Alert key={idx} className={formStyles.ErrorAlert}>
                   {message}
                 </Alert>
               ))}
-              <Form.Group controlId="why">
+              <Form.Group controlId="why" className={styles.Group}>
                 <Form.Label>Why:</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Why is this area important to you?"
+                  placeholder="Why is this important to you?"
                   name="why"
                   value={why}
                   onChange={handleChange}
+                  className={styles.LongInput}
                 />
-              </Form.Group>
+              </Form.Group >
               {errors.non_field_errors?.map((message, idx) => (
-                <Alert key={idx}>
+                <Alert key={idx} className={formStyles.ErrorAlert}>
                   {message}
                 </Alert>
               ))}
             </div>
           </div>
-          <div>
-            <Button>
-              <Link to={'/organise'}>
+          <div className={styles.Buttons}>
+            <Button className={btnStyles.Button}>
+              <Link to={'/organise'} className={styles.InnerButton}>
                 Cancel
               </Link>
             </Button>
-            <Button type="submit">
+            <Button className={btnStyles.Button} type="submit">
               Save
             </Button>
           </div>
