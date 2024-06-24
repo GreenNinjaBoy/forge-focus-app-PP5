@@ -1,4 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
+import accStyles from '../../styles/Accordion.module.css';
+import cardStyles from '../../styles/Cards.module.css';
+import btnStyles from '../../styles/Button.module.css';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import {Accordion, Card, Spinner} from 'react-bootstrap';
 import { useAccordionToggle, AccordionContext } from 'react-bootstrap';
@@ -18,7 +21,7 @@ const RefineMobileHighlight = (props) => {
   useEffect(() => {
     const fetchUserGoals = async () => {
       try {
-        const {data} = await axiosReq.get(`/usergoals/?refine_id=${id}`);
+        const {data} = await axiosReq.get(`/goals/?refine_id=${id}`);
         setUserGoals(data);
         setHasLoaded(true);
       } catch(err) {
@@ -39,6 +42,7 @@ const RefineMobileHighlight = (props) => {
     const isCurrentEventKey = currentEventKey === eventKey;
     return (
       <div
+      className={accStyles.Header}
         style={{
           color: isCurrentEventKey ? '#3c159c' : 'black',
           fontWeight: isCurrentEventKey ? 'bold' : 'normal' }}
@@ -58,15 +62,15 @@ const RefineMobileHighlight = (props) => {
     <Card>
       <Card.Header>
         <ContextAwareToggle as={Card.Header} eventKey={id}>
-          <div>
-            <img src={image} alt={`${name} refine`}/>
+          <div className={accStyles.Title}>
+            <img className={accStyles.Image} src={image} alt={`${name} refine`}/>
             <h2>{name}</h2>
           </div>
         </ContextAwareToggle>
       </Card.Header>
       <Accordion.Collapse eventKey={id}>
         <Card.Body>
-          <div>
+          <div className={accStyles.GoalContainer}>
             {hasLoaded ? (
               <>
                 {userGoals.results.length ? (
@@ -79,15 +83,15 @@ const RefineMobileHighlight = (props) => {
               </>
             ) : (
               <>
-                <div>
+                <div className={cardStyles.SpinnerContainer}>
                   <Spinner animation="border" />
                   <p>We are just loading your goals</p>
                 </div>
               </>
             )}
           </div>
-          <div>
-            <Link to={`/refine/${id}`}>
+          <div className={cardStyles.ButtonContainer}>
+            <Link className={`${btnStyles.Button} ${cardStyles.Button}`} to={`/refine/${id}`}>
               Go to refinement
             </Link>
           </div>
