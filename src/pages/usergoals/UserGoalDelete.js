@@ -27,7 +27,7 @@ const UserGoalDelete = ( props ) => {
     
   const handleDelete = async () =>  {
     try {
-      await axiosReq.delete(`/usergoals/${id}`);
+      await axiosReq.delete(`/goals/${id}`);
       setGlobalSuccessMessage("Your goal has been deleted");
       setShowGlobalSuccess(true);
       const goalIndex = goalList.findIndex(goal => usergoals.id === id);

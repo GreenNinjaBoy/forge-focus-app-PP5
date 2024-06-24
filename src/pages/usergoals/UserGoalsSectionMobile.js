@@ -23,7 +23,7 @@ const UserGoalsSectionMobile = (props) => {
   useEffect(() => {
     const fecthUserGoals = async () => {
       try {
-        const {data} = await axiosReq.get(`usergoals/?refine_id=${refine_id}`);
+        const {data} = await axiosReq.get(`goals/?refine_id=${refine_id}`);
         setUserGoals(data);
         setHasLoaded(true);
       } catch(err) {

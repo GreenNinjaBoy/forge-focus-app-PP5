@@ -54,7 +54,7 @@ const UserGoalCreate = (props) => {
       formData.append('achieve_by', djangoDate)
     }
     try {
-      const {data} = await axiosReq.post('/usergoals/', formData);
+      const {data} = await axiosReq.post('/goals/', formData);
       setGlobalSuccessMessage("Congratulations you have created a new Goal");
       setShowGlobalSuccess(true);
       setKeyParameters({

@@ -77,7 +77,7 @@ const UserGoalEdit = (props) => {
       formData.append('achieve_by', djangoDate)
     }
     try {
-      const{data} = await axiosReq.put(`/userGoals/${id}`, formData);
+      const{data} = await axiosReq.put(`/goals/${id}`, formData);
       setGlobalSuccessMessage('Goal edited successfully!')
       setShowGlobalSuccess(true);
       const userGoalIndex = userGoalList.findIndex(goal => userGoalData.id === id);
