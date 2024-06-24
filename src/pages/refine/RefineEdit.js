@@ -1,5 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { axiosReq } from '../../api/axiosDefaults';
+import styles from '../../styles/RefineView.module.css';
+import formStyles from '../../styles/Form.module.css';
+import btnStyles from '../../styles/Button.module.css';
 import { Alert, Button, Form, Image } from 'react-bootstrap';
 import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../context/GlobalMessageContext';
 
@@ -73,35 +76,36 @@ const RefineEdit = (props) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <div>
+      <div className={styles.FocusForm}>
 
-        <Form.Group controlId="refine-new-image">
+        <Form.Group controlId="refine-new-image" className={styles.ImageGroup}>
           {errors.image?.map((message, idx) => (
             <Alert key={idx}>
               {message}
             </Alert>
           ))}
-          <Image src={newImage} alt='refinement'/>
+          <Image src={newImage} className={styles.EditImage} alt='refinement'/>
           <Form.File
             id="image-upload"
             accept="image/*"
+            className={styles.FormFile}
             onChange={handleChangeImage}
             ref={imageInput}
             aria-label='Click to change the refinement image'
           />
         </Form.Group>
-        <div>
-          <div>
+        <div className={styles.FormSection}>
+          <div className={styles.MainForm}>
 
-            <div>
+            <div className={styles.ErrorContainer}>
               <div>
                 {errors.name?.map((message, idx) => (
-                  <Alert key={idx}>
+                  <Alert key={idx} className={formStyles.ErrorAlert}>
                     {message}
                   </Alert>
                 ))}
               </div>
-              <Form.Group controlId="refinement-new-name">
+              <Form.Group controlId="refinement-new-name" className={styles.Group}>
                 <Form.Label>Refinement:</Form.Label>
                 <Form.Control
                   type="text"
@@ -109,19 +113,20 @@ const RefineEdit = (props) => {
                   name="newName"
                   value={newName}
                   onChange={handleChange}
+                  className={styles.ShortInput}
                 />
               </Form.Group>
             </div>
 
             <div>
-              <div>
+              <div className={styles.ErrorContainer}>
                 {errors.why?.map((message, idx) => (
-                  <Alert key={idx}>
+                  <Alert key={idx} className={formStyles.ErrorAlert}>
                     {message}
                   </Alert>
                 ))}
               </div>
-              <Form.Group controlId="refinement-new-why">
+              <Form.Group controlId="refinement-new-why" className={styles.Group}>
                 <Form.Label> Why:</Form.Label>
                 <Form.Control
                   type="text"
@@ -129,26 +134,27 @@ const RefineEdit = (props) => {
                   name="newWhy"
                   value={newWhy}
                   onChange={handleChange}
+                  className={styles.LongInput}
                 />
               </Form.Group>
             </div>
           </div>
       
-          <div>
-            <div>
+          <div className={styles.ButtonsPlus}>
+            <div className={styles.ErrorContainer}>
               {errors.non_field_errors?.map((message, idx) => (
-                  <Alert key={idx}>
+                  <Alert key={idx} className={formStyles.ErrorAlert}>
                     {message}
                   </Alert>
                 ))}
             </div>
             <div>
-              <Button onClick={handleCancel}>
-                <div>
+              <Button className={`${btnStyles.Button} ${styles.Button}`} onClick={handleCancel}>
+                <div className={styles.InnerButton}>
                   Cancel
                 </div>
               </Button>
-              <Button type="submit">
+              <Button className={`${btnStyles.Button} ${styles.Button}`}  type="submit">
                 Save changes
               </Button>
             </div>
