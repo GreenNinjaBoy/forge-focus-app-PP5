@@ -1,4 +1,6 @@
 import React from 'react';
+import btnStyles from '../../styles/Button.module.css';
+import styles from '../../styles/RefineView.module.css';
 import { Button } from 'react-bootstrap';
 import { axiosRes } from '../../api/axiosDefaults';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
@@ -32,18 +34,18 @@ const RefineDelete = (props) => {
     }
   };
   return (
-    <div>
-      <img src={image} alt='Refinement'/>
-      <div>
+    <div className={styles.ViewContainer}>
+      <img className={styles.Image} src={image} alt='Refinement'/>
+      <div className={styles.ConfirmDelete}>
         <p>Are you sure you wish to delete your refinement: {name}?</p>
         <p>Deleting it will also result in all assignments and steps within this refinement being deleted!</p>
         <div>
-          <Button onClick={handleCancel}>
-            <div>
+          <Button className={`${btnStyles.Button} ${styles.Button}`}   onClick={handleCancel}>
+            <div className={styles.InnerButton}>
               Cancel
             </div>
           </Button>
-          <Button onClick={handleDelete}>
+          <Button className={`${btnStyles.Button} ${styles.Button}`} onClick={handleDelete}>
             Delete
           </Button>
         </div>
