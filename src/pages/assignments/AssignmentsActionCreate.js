@@ -55,7 +55,7 @@ const AssignmentsActionCreate = (props) => {
       if (refine!== 'misc') {
         const fetchUserGoals = async () => {
           try {
-            const {data} = await axiosReq.get(`/usergoals/?refine_id=${refine}`);
+            const {data} = await axiosReq.get(`/goals/?refine_id=${refine}`);
             setUserGoals(data);
             setHasLoadedGoals(true);
           } catch(err) {
@@ -91,7 +91,7 @@ const AssignmentsActionCreate = (props) => {
       formData.append('achieve_by', djangoDate);
     };
     try {
-      const {data} = await axiosReq.post('/assingments/', formData);
+      const {data} = await axiosReq.post('/assignment/', formData);
       setGlobalSuccessMessage("New assignment created");
       setShowGlobalSuccess(true);
       const assignmentList = activeAssignments.results;
