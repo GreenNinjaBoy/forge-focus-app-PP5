@@ -44,7 +44,7 @@ function Signin() {
             history.push('/');
         } catch(err){
             console.log(err)
-            setErrors(err.response?.data);
+            setErrors(err.response?.data || {});
         }
     };
 
