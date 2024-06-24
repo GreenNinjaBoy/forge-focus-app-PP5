@@ -1,4 +1,5 @@
 import React from 'react';
+import pageStyles from '../../styles/Page.module.css';
 import { useCheckedUser, useCurrentUser } from '../../context/CurrentUserContext';
 import { useParams } from 'react-router-dom/cjs/react-router-dom';
 import RefineMobile from './RefineMobile';
@@ -11,16 +12,16 @@ const Refine = () => {
     const { id } = useParams();
 
   return (
-    <div>
+    <div className={pageStyles.PageContainer}>
         {checkedUser ? (
             <>
-                <div>
+                <div className={pageStyles.Title}>
                     <h1>Time to Refine {currentUser.username}</h1>
                 </div>
-                <div>
+                <div className={pageStyles.MobileOnly}>
                     <RefineMobile id={id} />
                 </div>
-                <div>
+                <div className={pageStyles.DesktopOnly}>
                     <RefineDestop id={id} />
                 </div>
             </>
