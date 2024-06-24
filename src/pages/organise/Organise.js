@@ -1,4 +1,6 @@
 import React from "react";
+import btnStyles from '../../styles/Button.module.css';
+import pageStyles from '../../styles/Page.module.css';
 import OrganiseDetails from "./OrganiseDetails";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useCheckedUser, useCurrentUser } from "../../context/CurrentUserContext";
@@ -9,21 +11,21 @@ const Organise = () => {
     const checkedUser = useCheckedUser();
 
     return (
-    <div>
+    <div className={pageStyles.PageContainer}>
       {checkedUser ? (
         <>
-          <div>
+          <div className={pageStyles.Title}>
             <h1>{currentUser.username}'s Plan</h1>
           </div>      
-          <div>
-            <Link to={'/refine/create'}>
+          <div className={btnStyles.ButtonContainer}>
+            <Link className={btnStyles.Button} to={'/refine/create'}>
               Create new refinement
             </Link>
           </div>
-          <div >
+          <div className={pageStyles.MobileOnly} >
             <OrganiseDetails mobile />
           </div>
-          <div>
+          <div className={pageStyles.DesktopOnly}>
             <OrganiseDetails />
           </div>
         </>
