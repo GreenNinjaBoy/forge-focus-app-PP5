@@ -1,4 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
+import styles from '../../styles/TakeSteps.module.css';
+import accStyles from '../../styles/Accordion.module.css';
 import { Accordion, Card, Form, Spinner, useAccordionToggle, AccordionContext } from 'react-bootstrap';
 import { axiosReq } from '../../api/axiosDefaults';
 import StepsTask from './StepsTask';
@@ -27,7 +29,7 @@ const TakeStepsMobile = ( props ) => {
       const updateSearchList = async () => {
         try {
           setHasLoaded(false);
-          const {data} = await axiosReq.get(`/assingments/?search=${query}`);
+          const {data} = await axiosReq.get(`/assingment/?search=${query}`);
           setSearchList(data);
           setHasLoaded(true);
         }  catch(err) {
@@ -50,7 +52,7 @@ const TakeStepsMobile = ( props ) => {
   useEffect(() => {
     const changeActiveAssignmentsOrder = async () => {
       try {
-        const {data} = await axiosReq.get(`/assignments/${filter}`);
+        const {data} = await axiosReq.get(`/assignment/${filter}`);
         setActiveAssignments(data);
         setHasLoaded(true);
       }  catch(err) {
@@ -71,6 +73,7 @@ const TakeStepsMobile = ( props ) => {
     const isCurrentEventKey = currentEventKey === eventKey;
     return (
       <div
+        className={accStyles.Header}
         style={{
           color: isCurrentEventKey ? '#3c159c' : 'black',
           fontWeight: isCurrentEventKey ? 'bold' : 'normal' }}
@@ -86,7 +89,7 @@ const TakeStepsMobile = ( props ) => {
     );
   }
   return (
-    <Accordion>
+    <Accordion className={styles.Accordion}>
       <Card>
         <Card.Header>
           <ContextAwareToggle as={Card.Header} eventKey="0">
@@ -94,19 +97,20 @@ const TakeStepsMobile = ( props ) => {
           </ContextAwareToggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
-          <Card.Body>
-            <div>
-              <div>
+          <Card.Body className={styles.AccordionBody}>
+            <div className={styles.FunctionContainer}>
+              <div className={styles.SearchContainer}>
                 <Form onSubmit={(event) => event.preventDefault()}>
                   <Form.Control
                     type="text"
+                    className={styles.SearchInput}
                     placeholder="Search assignments"
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}/>
                 </Form>
               </div>
-              <div>
-                <label htmlFor="filter">Order by:</label>
+              <div className={styles.Filter}>
+                <label htmlFor="filter" className={styles.FilterLabel}>Order by:</label>
                 <select id="filter" name="filter" onChange={handleFilter}>
                   <option name="filter" value='?ordering=achieve_by'>Assignment deadline</option>
                   <option name="filter" value='?ordering=-refine'>Refine Area</option>
@@ -136,11 +140,11 @@ const TakeStepsMobile = ( props ) => {
                       type="active"/>
                   ))
                 ) : (
-                  <p>No assignemnts found</p>
+                  <p className={styles.AddPadding}>No assignemnts found</p>
                 )
               )
             ) : (
-              <div>
+              <div className={styles.SpinnerContainer}>
                 <Spinner animation="border" />
                 <p>Loading assignemnts</p>
               </div>
@@ -168,10 +172,10 @@ const TakeStepsMobile = ( props ) => {
                     type="today"/>
                 ))
               ) : (
-                <p>No assignments found</p>
+                <p className={styles.AddPadding}>No assignments found</p>
               )
             ) : (
-              <div>
+              <div className={styles.SpinnerContainer}>
                 <Spinner animation="border" />
                 <p>Loading assignemnts</p>
               </div>
@@ -187,7 +191,7 @@ const TakeStepsMobile = ( props ) => {
           </ContextAwareToggle>
         </Card.Header>
         <Accordion.Collapse eventKey="2">
-          <Card.Body>
+          <Card.Body className={styles.AccordionBody}>
             {hasLoaded ? (
               achievedList?.length>0 ? (
                 achievedList.map( assignment => (
@@ -199,10 +203,10 @@ const TakeStepsMobile = ( props ) => {
                     type="achieved"/>
                 ))
               ) : (
-                <p>No Completed Assignments!</p>
+                <p className={styles.AddPadding}>No Completed Assignments!</p>
               )
             ) : (
-              <div>
+              <div className={styles.SpinnerContainer}>
                 <Spinner animation="border" />
                 <p>Loading assignments!</p>
               </div>
