@@ -5,7 +5,9 @@ import { axiosReq } from '../../api/axiosDefaults';
 import { Alert, Form } from 'react-bootstrap';
 import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../context/GlobalMessageContext';
 
+// Component for editing an assignment
 const AssignmentEdit = (props) => {
+  // Destructuring props to extract variables
   const {
     id,
     name,
@@ -18,9 +20,11 @@ const AssignmentEdit = (props) => {
     type
   } = props;
 
+  // Hooks for setting global success messages
   const setShowGlobalSuccess = useSetShowGlobalSuccess();
   const setGlobalSuccessMessage = useSetGlobalSuccessMessage();  
 
+  // Function to convert date to a suitable format
   const convertedDate = () => {
     if (achieve_by !== null){
       const dateWithTime = new Date(achieve_by).toISOString()
@@ -30,8 +34,10 @@ const AssignmentEdit = (props) => {
     } 
   };
 
+  // Extracting assignment list from assignments prop
   const assignmentList = assignments.results;
 
+  // State for form data
   const [taskData, setAssignmentData] = useState({
     newName: name,
     newRefine: refine,
@@ -39,6 +45,7 @@ const AssignmentEdit = (props) => {
     newAchieve_by: convertedDate(),
   })
 
+  // Destructuring taskData for ease of use
   const {
     newName,
     newRefine,
@@ -46,19 +53,23 @@ const AssignmentEdit = (props) => {
     newAchieve_by,
   } = taskData;
 
+  // State for form errors
   const [errors, setErrors] = useState({});
 
+  // Function to handle form field changes
   const handleChange = (event) => {
     setAssignmentData({
-      ...setAssignmentData,
+      ...taskData,
       [event.target.name]: event.target.value,
     });
   };
 
+  // Function to handle cancel action and revert to view state
   const handleCancel = () => {
     setAssignmentState("view");
   };
 
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -95,6 +106,7 @@ const AssignmentEdit = (props) => {
     }
   };
 
+  // Render form for editing assignment
   return (
     <div className={styles.EditContainer}>
       <Form onSubmit={handleSubmit}>
