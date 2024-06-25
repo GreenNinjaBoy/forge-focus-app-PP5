@@ -43,7 +43,7 @@ const UserGoalCreate = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append('title', title)
+    formData.append('goal_title', title)
     formData.append('description', description)
     formData.append('criteria', criteria)
     formData.append('refine', refine_id)
@@ -186,7 +186,7 @@ const UserGoalCreate = (props) => {
           ))}
 
           <Form.Group controlId="user-goal-achieve-by" className={styles.Group}>
-            <Form.Label className={styles.FormLabel}> Goal Achieved by:</Form.Label>
+            <Form.Label className={styles.FormLabel}> Achieve by:</Form.Label>
             <Form.Control
               type="date"
               name="achieve_by"
