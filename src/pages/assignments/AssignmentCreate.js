@@ -5,7 +5,9 @@ import styles from '../../styles/AssignmentsCreate.module.css';
 import { axiosReq } from '../../api/axiosDefaults';
 import {useSetGlobalSuccessMessage, useSetShowGlobalSuccess} from '../../context/GlobalMessageContext';
 
+// Component for creating assignments
 const AssignmentCreate = ( props) => {
+  // Destructuring props to extract variables
   const {
     refine_id,
     usergoal_id,
@@ -14,11 +16,14 @@ const AssignmentCreate = ( props) => {
     type
   } = props;
 
+  // Hooks for setting global success messages
   const setShowGlobalSuccess = useSetShowGlobalSuccess();
   const setGlobalSuccessMessage = useSetGlobalSuccessMessage();
 
+  // Extracting assignment list from assignments prop
   const assignmentList = assignments.results;
 
+  // State for managing assignment data form
   const [assignmentData, setAssignmentData] = useState ({
     name:'',
     refine: refine_id,
@@ -26,6 +31,7 @@ const AssignmentCreate = ( props) => {
     achieve_by: '',
   });
 
+  // Destructuring assignmentData for easy access
   const {
     name,
     refine,
@@ -33,8 +39,10 @@ const AssignmentCreate = ( props) => {
     achieve_by,
   } = assignmentData;
 
+  // State for managing form errors
   const [errors, setErrors] = useState({});
 
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -75,6 +83,7 @@ const AssignmentCreate = ( props) => {
     }
   };
 
+  // Function to handle changes in form inputs
   const handleChange = (event) => {
     setAssignmentData({
       ...assignmentData,
@@ -82,6 +91,7 @@ const AssignmentCreate = ( props) => {
     });
   };
 
+  // Function to reset form and errors
   const handleCancel = (event) => {
     event.preventDefault();
     setErrors({});
@@ -93,6 +103,7 @@ const AssignmentCreate = ( props) => {
     });
   };
 
+  // Render form for creating assignments
   return (
     <div className={styles.FormContainer}>
       <h4>Add {type} Assingment </h4>

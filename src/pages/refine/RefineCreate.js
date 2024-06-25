@@ -72,7 +72,7 @@ const RefineCreate = () => {
 
     return (
     <div className={pageStyles.PageContainer}>
-        <div className={pageStyles.TitleContainer}>
+        <div>
         <h1 className={pageStyles.TitleContainer}>Create refinement</h1>
       </div>
       <div className={`${pageStyles.ContentContainer} ${styles.FormContainer}`}>
