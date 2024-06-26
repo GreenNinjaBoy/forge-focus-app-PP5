@@ -640,3 +640,74 @@ If the user wishes to reset their saved items they can do at the top of the "Tak
 ## Still to complete column
 
 User can locate all of their Assignments together in the "Still to Complete". Assignments are initially ordered by the assignment achieve by date and then by the order in which the assignments were created, with the initial assignment  that was created.
+
+## Languages Used
+
+HTML, CSS, JavaScript and JSX
+
+
+## Frameworks and Libraries
+
+
+[React 17.0.2](https://legacy.reactjs.org/docs/getting-started.html)  - A JavaScript library for building user interfaces. An older version was chosen to stay inline with all other dependencies used as part of the Moments walkthrough which provided a base that this project was then modelled on. Using the react framework really elevated this project, allowing pages such as focus to contain full crude functionality for 2 models as well as RUD for a third all within one view. Providing the user with a way to see and connect all their data together.
+
+[React bootstrap 1.6.3](https://react-bootstrap.github.io/)  - A frontend framework built for react that provides common components. React bootstrap was chosen to help speed up the development of this project and allow time to focused elsewhere. In particular, the accordion component has been essential in providing mobile users with an uncluttered view while allowing quick and easy movement through different areas of their data.
+
+[React Router 5.3.0](https://github.com/remix-run/react-router)  - A lightweight, fully-featured routing library for React. This library has allowed seamless navigation around the site to be provided for users.
+
+[Axios](https://axios-http.com/)  - A simple promise based HTTP client for the browser and node.js. An essential component of this project providing connection between the frontend and backend.
+
+[jwt-decode 3.1.2](https://www.npmjs.com/package/jwt-decode)  - Used to decode the JSON web tokens. Another essential component of this project in providing a secure passageway between the frontend and backend for users.
+
+[react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component)  - Used to provide loading of next set of data on page scrolling where the data exceeds pagination limit. This has not been utilized.
+
+## Tools and Technologies
+
+
+### Tools and technologies used to aid with planning
+
+
+[Drawio](https://www.drawio.com/)  - Used to create the flow diagram showing how the user will move through the website.
+
+[Balsamiq](https://balsamiq.com/)  - Used to create wireframes showing the skeleton plane of the design phase.
+
+### Tools and technologies used to aid with the coding of this project
+
+
+[Code Institute Template](https://github.com/new?template_name=react-ci-template&template_owner=Code-Institute-Org)  - Provided me with a familiar base from which to build my project.
+
+[GitHub](https://github.com/)  - Stores the repository for this project so that it can be viewed by others. Github issues and projects were also utilized.
+
+[git](https://git-scm.com/)  - Controlled the building of this project in a series of versions which can be tracked.
+
+[GitPod](https://code.gitpod.io/)  - The editor in which this project has been built. At the start of my project I was using my own account. However as the project progressed CodeInstitute were able to provide me with a Student Enterprise account which helped greatly as I was then not worried about using all of my credits. 
+
+
+### Tools and technologies used to aid with the content for this project
+
+
+
+[Am I responsive?](https://ui.dev/amiresponsive)  - Used to create the image showing the site across multiple screensizes.
+
+### Tools and technologies used to aid testing this project
+
+[WebAim contrast checker](https://webaim.org/resources/contrastchecker/)  - Used to test the contrast between foreground and background colors to ensure they met accessibility guidelines.
+
+[ESLint](https://eslint.org/)  - Installed within Gitpod to validate the JavaScript and JSX code.
+
+[CSS Validation Service](https://jigsaw.w3.org/css-validator/)  - Used to validate the CSS code.
+
+[Wave](https://chromewebstore.google.com/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh)  - Used to check for compliance with accessibility guidelines.
+
+[Chrome developer tools](https://developer.chrome.com/docs/devtools)  - Used throughout to aid with writing of CSS, debugging, display of console errors and testing of performance, accessibility, best practice and search engine optimization.
+
+## Testing and Validation
+
+See  [TESTING.md]()  for all testing and validation.
+
+## Bugs and Fixes
+
+**Insert Table When Ready to do so**
+
+
+## Deployment
