@@ -472,3 +472,171 @@ Won't-have - the user stories that won't be worked on during this phase of the p
 ### Information Radiator
 
 GitHub projects was utilized as a Kanban board for this project and was linked to both this repository and the  [Forge Focus API repository](). This allowed both frontend and backend tasks to be viewed together and worked on in an order that allowed me to push for the best overall product that could be achieved within the time frame.
+
+## Features
+
+**Homepage**
+
+When a new user first navigates to the Forge Focus website, they are presented with the applications logo, name and slogan. Underneath this the user will find a carousel with information explaining the pages aim and what the page offers the user. Nested below the carousel is two buttons, one will take the user to the sign in page and the other to the sign up page. The applications logo has also been utilized as a favicon for the page.
+
+**Insert Screenshots here when ready**
+
+
+**Navigation Bar**
+
+A navigation bar with links are present at the top of all pages within the application, providing the user with easy navigation between the different pages/sections of the application. It is in a fixed position at the top of each page making it always/easy accessible to the user. The ability to move between each pages/sections is handled by routing. This prevents the page from needing to re-load, making for a more seamless experience for the user. The links that will be present will be based on the user's logged in/out status, this ensures that users who are not signed in are not provided any links that should be inaccessible to them but also ensures they are only provided with the links that they need.
+
+When on a mobile device, the navigation links are within a dropdown menu. This allows for optimal use of the available screen size when a user is using the application on a mobile device. A user can access the menu when they click on the hamburger icon, and when a user re-clicks or clicks outside the icon the menu will close presenting the user with only the hamburger icon again.
+
+The header element of the navigation bar contains the sites title and logo, these also act as links back to the homepage if the user were to click them.
+
+**User Authentication**
+  
+  The data pertaining to each user is private and protected, with user authentication ensuring that no other parties can access data other than the 'owner' of that data.
+
+**Sign Up Page**
+
+Any new user wishing to sign up to use the application's functionality will need to do so using the form within the sign-up page. This will then create and store data linking the signed-up user as the 'owner'.
+
+The 'Sign-up page has a clear title with all input fields having clear placeholder text informing the user of what information is required. Should the user fail to complete or incorrectly fill in the required field, errors messages will display to the user. On Successful completion of the sign-up form, the user is then re-directed to the 'Sign-in' page where a user Success message is displayed.
+
+**Insert Images here when ready**
+
+**Sign In Page**
+
+In order for a user to access their data, they will need to sign in. 
+
+The 'Sign In' page much like the 'Sign-up' page has a clear title with the input fields having clear placeholder text informing the user of what information is required. When successful the now 'Signed-In' user is re-directed to the home page, which alongside the header is now rendered specifically for authenticated users. The user is also presented with a success message, welcoming the user to their account. 
+
+JSON web tokens are used during the authentication process, with logic in place to ensure users are not unexpectedly logged out. When users are ready, in order to protect their data, they can logout. A clear link to 'Sign-Out' is provided to the user within the main navigation.
+
+ **Insert Images here when ready**
+
+**Refine**
+
+ Users who are authenticated can create areas that have been called 'Refine'. These are areas of a users life that the wish to concentrate on/refine. These refine areas also contain the Users Goals, and assignments, and provide the user a way to organize and identify purposes behind a users task.
+
+The button to create a new Refine object, is visible at the top of the organize page. When clicked this will take the user to form where they can begin to create their refine area. The user will be able to upload an image and an explanation as to why this area for refinement is important to them. These are optional for the user to fill out and if no image is added then there is a default image that is used.
+
+Similar to other forms within the application, if any fields a completed incorrectly, error messages are displayed to the user.
+
+
+**Delete Refine**
+When a user is viewing their refine object, there is a delete icon visible to them. When clicked on the user is then prompted with a message asking if the are certain that they wish to delete their refine object.
+
+**Add image of refine delete when ready**
+
+**Refine View**
+
+Once a refine object is created, the user is then re directed to their refine areas page. If a user wants to view these without creating a new area for refinement each time, they can do so through the organization page. 
+
+Each refine area contains a space for the user to add day to day assignments and goals, each having their own specific tasks. Initially the refine area will be empty with placeholder text, supporting new users when using this area.
+
+When a user is on a mobile device, an accordion is used to organize the different sections of this page. This makes it easier for the user to navigate around these areas.
+
+When a user is on larger screens the page is split into different sections. Details about the refine object are displayed at the top. Day to day assignments and user goals are also displayed. When a user clicks on a specific goal, that goal opens up into the central display space.
+
+When the user wishes to exit this page they can do so by clicking on the 'X' and the top right of the form.
+
+**Add images of refine view when ready**
+
+**Edit Refine**
+
+When a user is viewing a refine object, there is an edit icon visible to the user to which they can click on. When clicked details of the refine object are brought up into a form and this is where the user can edit any details they wish.
+
+**Add Image of Refine Edit when ready**
+
+## User Goals
+
+Within a users refine area, if authenticated users can create goals within that refine area. 
+By doing so the user can give themselves direction and something to aim for as they move forwards. All that is needed to create a user goal is a "user goal name". However there are a number of optional input fields that can be used to make the user goals, specific, achievable, reachable and time-bound as well as an extra field the user can use to define the value that would be gained in achieving the goal.
+
+ ** Mobile View**
+When a user is using the application through a mobile device there is a section within each refine area "accordion for creating a new goal". Clicking on the tab will open up the form.
+
+When a user successfully completes the form on a mobile device, the user will be shown a message of success, the form will clear and reset for the next goal to be added and an extra tab will then be visible to the user containing the new goal which has been added to the accordion.
+
+**Insert mobile images when ready**
+
+**Larger Screens**
+When a user is using devices with larger screens, there is a button to create a new user goal which is visible to the user at the bottom of the user goal list section within each refine area. When the user clicks on this a form will open up for the user within the central space of the screen.
+
+When a user successfully completes the form on a device with a larger screen will change the central space of the screen to display to the user their newly created goal. Similar to the mobile view the user will be shown a message of success and a new tab showing the newly created goal will also be added to the goals list.
+
+If the user were to incorrectly filled out / completed, an error message will pop up to the user informing them of this.
+
+### Editing a User Goal
+When a user is viewing their goals an edit icon is displayed to them. If the user wishes to edit the contents of their goal respectively, they can do so by clicking on this icon and a user goal detail form will be displayed to the user so that they can edit any details as required.
+
+**Picture of mobile view when available**
+**Picture of desktop view when available**
+
+### Deleting a User Goal
+
+Similar to the editing function when a user is viewing their goals and then decides that they want to delete them, the ability to do so is available to them. There is a delete icon visible to the user and when clicked a confirmation message is presented to the user informing them of what will happen if they decide to delete their goal. Users are then presented with two buttons, one to cancel the delete request and the other to confirm the deletion of their goal. If the user decides that they wish to confirm deletion then when successful the goal is deleted and removed from the focus area and the user is shown a message of completion. If the user clicks cancel then they are returned to the previous screen.
+
+**Picture of mobile view when available**
+**Picture of desktop view when available**
+
+## Assignments
+
+An authenticated user will also have the ability to create assignments for themselves. This will enable the user to list all of the things they need and want to do. These assignments can be organized through the users refine and user goal areas. When planning assignments the user can create the following.
+
+ 1. **Miscellaneous Assignments** - These assignments are not attached to any refine areas.
+ 2. **Day to Day Assignments**  - These assignments are linked to a refine area but not part of a specific user goal.
+ 3. **Goal Assignments** - These assignments are specifically linked to user goals, they are used as break down steps the user can use to achieve their overall goal.
+
+**Insert images here when ready**
+
+
+### Editing an Assignment
+When a user is viewing their assignments an edit icon is displayed to them. If the user wishes to edit the contents of their assignment respectively, they can do so by clicking on this icon and a user goal detail form will be displayed to the user so that they can edit any details as required.
+
+**Insert Edit Images When Ready**
+
+
+  ### Deleting an Assignment
+
+Similar to the editing function when a user is viewing their assignments and then decides that they want to delete them, the ability to do so is available to them. There is a delete icon visible to the user and when clicked a confirmation message is presented to the user informing them of what will happen if they decide to delete their assignment. Users are then presented with two buttons, one to cancel the delete request and the other to confirm the deletion of their assignment. If the user decides that they wish to confirm deletion then when successful, the chosen assignment is deleted and removed from the list of assignments and the user is shown a message of completion. If the user clicks cancel then they are returned to the previous screen.
+
+**Insert Delete Images When Ready**
+
+
+### User Success Message
+
+#### Success messages
+
+Every time a user successfully makes a change to their data - creation, editing or deletion - a success message is given. Every success message contains a title and details about the change that has been made.
+
+This success message is displayed at the top right of the screen just under the header, so as to always be visible but out of the way so it doesn't interrupt the user. It can be dismissed by clicking the x, or will disappear on its own after 8 seconds. This provides time for the user to see and read the message, while allowing the user to continue with what they are doing without having to stop a close a message every time they make a change to the data.
+
+## Take Steps
+
+Once a user has made their plan, the "Take Steps" section is where they can select tasks they want to work on today and start ticking them off. It can be accessed directly from the main navigation menu as well as from a call to action button displayed when users first log in to their account.
+
+**Mobile View**
+
+The Take Action is made of three sections, displayed in an accordion on mobiles.
+
+**Insert Mobile View When Ready**
+
+**Larger Screens View**
+
+On larger screens the three sections are displayed alongside each other.
+
+**Insert Larger Screens Image when ready**
+
+**No Data Currently Present**
+
+If a user has no data present, then there is placeholder text in place informing the user.
+
+**Insert No Data Image When ready**
+
+## Reset
+If the user wishes to reset their saved items they can do at the top of the "Take Steps" page. By clicking this just like other areas a confirmation message which explains what will happen if the user confirms to reset. On confirming this all of the users "Completed tasks are deleted and all the assignments that are in the "Today Column are moved back into the "Still to Complete" section. This feature gives the user a quick and clean way of clearing the "Take Steps" page ready to be used again when ready.
+
+**Insert Images of reset function when ready**
+
+## Still to complete column
+
+User can locate all of their Assignments together in the "Still to Complete". Assignments are initially ordered by the assignment achieve by date and then by the order in which the assignments were created, with the initial assignment  that was created.
