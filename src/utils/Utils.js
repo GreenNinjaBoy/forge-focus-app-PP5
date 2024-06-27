@@ -10,7 +10,11 @@ export const setTokenTimestamp = (data) => {
 };
 
 export const shouldRefreshToken = () => {
-    return !!localStorage.getItem('refreshTokenTimestamp')
+    if (localStorage.refreshTokenTimeStamp) {
+        return parseInt(localStorage.refreshTokenTimeStamp) > Math.floor(Date.now() / 1000);
+    }
+
+    return false;
 };
 
 export const removeTokenTimestamp = () => {

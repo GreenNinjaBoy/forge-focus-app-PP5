@@ -2,7 +2,7 @@ import React from 'react';
 import btnStyles from '../../styles/Button.module.css';
 import styles from '../../styles/RefineView.module.css';
 import { Button } from 'react-bootstrap';
-import { axiosRes } from '../../api/axiosDefaults';
+import { axiosReq } from '../../api/axiosDefaults';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../context/GlobalMessageContext';
 
@@ -25,7 +25,7 @@ const RefineDelete = (props) => {
 
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/refine/${id}`);
+      await axiosReq.delete(`/refine/${id}`);
       setGlobalSuccessMessage("You have deleted your refinement");
       setShowGlobalSuccess(true);
       history.push('/organise')

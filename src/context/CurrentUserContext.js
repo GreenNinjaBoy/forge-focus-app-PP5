@@ -7,7 +7,6 @@ import { createContext, useContext, useEffect, useState, useMemo } from "react";
 import {axiosReq, axiosRes} from "../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/Utils";
-
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 
@@ -27,9 +26,10 @@ export const CurrentUserProvider = ({children}) => {
 
     const handleMount = async () => {
         try {
-            const {data} = await axiosRes.get('dj-rest-auth/user/')
+            const {data} = await axiosRes.get('/dj-rest-auth/user/')
             setCurrentUser(data)
         } catch(err){
+            console.error("Bad news. Couldn't get the user");
             console.log(err)
         } finally {
             setCheckedUser(true);
@@ -63,27 +63,6 @@ export const CurrentUserProvider = ({children}) => {
                 return Promise.reject(err);
             }
         );
-
-        axiosRes.interceptors.response.use(
-            (response) => response,
-                async (err) => {
-                if (err.response?.status === 401){
-                    try{
-                    await axios.post('/dj-rest-auth/token/refresh/')
-                    } catch(err){
-                    setCurrentUser(prevCurrentUser => {
-                        if (prevCurrentUser){
-                        history.push('/signin')
-                        }
-                        return null;
-                    });
-                    removeTokenTimestamp();
-                    }
-                    return axios(err.config);
-                }
-                return Promise.reject(err);
-                }
-            );
         }, [history]);
 
         return (

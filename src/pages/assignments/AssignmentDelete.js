@@ -1,5 +1,5 @@
 import React from 'react';
-import { axiosRes } from '../../api/axiosDefaults';
+import { axiosReq } from '../../api/axiosDefaults';
 import btnStyles from '../../styles/Button.module.css';
 import styles from '../../styles/AssignmentsCreate.module.css';
 import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../context/GlobalMessageContext';
@@ -32,7 +32,7 @@ const AssignmentDelete = (props) => {
   const handleDelete = async () => {
     try {
       // Sending delete request to the server
-      await axiosRes.delete(`/assingment/${id}`);
+      await axiosReq.delete(`/assingment/${id}`);
       // Setting global success message
       setGlobalSuccessMessage("Assignment Deleted");
       setShowGlobalSuccess(true);

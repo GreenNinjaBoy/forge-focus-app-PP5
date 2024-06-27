@@ -31,14 +31,13 @@ const UserGoalSection = (props) => {
     setUserGoalState("create");
     setKeyParameters({
       ...keyParameters,
-      refine_id: '',
     });
   }
 
   useEffect(() => {
     const fecthUserGoals = async () => {
       try {
-        const {data} = await axiosReq.get(`goals/?refine_id=${refine_id}`);
+        const {data} = await axiosReq.get(`/goals/?refine_id=${refine_id}`);
         setUserGoals(data);
         setHasLoaded(true);
       } catch (err) {

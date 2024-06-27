@@ -6,7 +6,7 @@ import pageStyles from '../../styles/Page.module.css';
 import btnStyles from '../../styles/Button.module.css';
 import TakeStepsMobile from './TakeStepsMobile.js'
 import TakeStepsDesktop from './TakeStepsDesktop.js'
-import { axiosReq, axiosRes } from '../../api/axiosDefaults.js';
+import { axiosReq } from '../../api/axiosDefaults.js';
 import AssignmentsActionCreate from '../assignments/AssignmentsActionCreate.js';
 import { useSetGlobalSuccessMessage, useSetShowGlobalSuccess } from '../../context/GlobalMessageContext.js';
 
@@ -70,7 +70,7 @@ const TakeSteps = () => {
       for (const assignment of achievedList) {
         try {
           const { id } = assignment;
-          await axiosRes.delete(`/assignment/${id}`)
+          await axiosReq.delete(`/assignment/${id}`)
           setGlobalSuccessMessage("You have reset your steps board. All assignments that were complete have been deleted and everything else returned to the backlog.");
           setShowGlobalSuccess(true);
           const activeList = activeAssignments.results;

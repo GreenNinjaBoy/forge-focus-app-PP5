@@ -6,14 +6,14 @@ import formStyles from '../../styles/Form.module.css';
 import {axiosReq} from '../../api/axiosDefaults';
 import {useSetGlobalSuccessMessage, useSetShowGlobalSuccess} from '../../context/GlobalMessageContext';
 
-const UserGoalCreate = (props) => {
-  const {
+const UserGoalCreate = ({
     usergoals,
     setUserGoals,
     setUserGoalsState,
     setKeyParameters,
     keyParameters
-  } = props
+  }) => {
+  console.log(keyParameters);
 
   const setShowGlobalSuccess = useSetShowGlobalSuccess();
   const setGlobalSuccessMessage = useSetGlobalSuccessMessage();
