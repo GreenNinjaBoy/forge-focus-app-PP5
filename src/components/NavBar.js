@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from '../styles/NavBar.module.css';
-import ffLogo from '../assets/ffLogo.png';
 import { useCurrentUser, useSetCurrentUser } from '../context/CurrentUserContext';
 import axios from 'axios';
 import { removeTokenTimestamp } from '../utils/Utils';
@@ -51,10 +50,6 @@ const NavBar = () => {
         <Navbar expanded={expanded} expand="md" fixed="top" className={styles.Header}>
             <NavLink to="/">
             <div className={styles.LogoContainer}>
-                <img
-                    src={ffLogo}
-                    alt="Forge Focus"
-                    className={styles.Logo}/>
                 <div>
                 <h2 className={styles.LogoName}>Forge Focus</h2>
                 </div>

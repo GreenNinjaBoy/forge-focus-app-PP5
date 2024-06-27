@@ -1,5 +1,6 @@
 .Header {
-    background-color: #002d2b;
+    background-color: #78e79e;
+    border: solid 1px #007926;
     height: 55px;
     align-items: normal;
 }
@@ -34,10 +35,9 @@
 
 .NavLinks {
     position: fixed;
-    height: 55px;
+    height: 50px;
     right: 0px;
     padding: 10px, 20px 5px 20px;
-    background-color: #002d2b;
     text-align: left;
     align-items: center;
     border-bottom-left-radius: 5px;
@@ -50,6 +50,7 @@
     }
     .NavLinks {
         position: static;
+        background-color: #78e79e;
     }
     .DesktopLinks{
         justify-content: flex-end;

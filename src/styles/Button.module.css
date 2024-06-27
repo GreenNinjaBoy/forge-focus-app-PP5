@@ -9,8 +9,8 @@
 
 .Button {
   color: white;
-  background-color: #789d81;
-  border-color: #789d81;
+  background-color: #fab45a;
+  border: 1px solid #fab45a;
   border-radius: 5px;
   box-sizing: border-box;
   height: 34px;
